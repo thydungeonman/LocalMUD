@@ -24,6 +24,11 @@ import curses
 import copy
 import random
 
+VERSION = "v0.7.91 — The Distraction"
+DEV_NOTE = "Adding mini games to local mud!"
+
+CORE_STATS = ["Strength", "Dexterity", "Intelligence", "Wisdom", "Constitution", "Charisma"]
+
 def safe_getkey(stdscr, timeout=5000):
     stdscr.timeout(timeout)
     try:
@@ -62,15 +67,18 @@ CLASS_DESCRIPTIONS = {
     "Halfling": "Small and sneaky. Lucky and light-footed."
 }
 
-VERSION = "v0.6.0 — The Fleshening"
-DEV_NOTE = "A new character creation process! The hero has stats now!"
-CORE_STATS = ["Strength", "Dexterity", "Intelligence", "Wisdom", "Constitution", "Charisma"]
+
+
 
 def roll_stats():
     return {stat: sum(random.randint(1, 6) for _ in range(3)) for stat in CORE_STATS}
 
 def create_character(stdscr, base_player):
     player = copy.deepcopy(base_player)
+     
+    # --- Inialize Gold ---
+    player["gold"] = player.get("gold", 100)
+
 
     # ─── Name Entry ───
     curses.echo()
@@ -243,3 +251,16 @@ def get_eligible_classes(stats):
         if all(stats.get(stat, 0) >= value for stat, value in reqs.items()):
             eligible.append(cls)
     return eligible
+
+def add_gold(player, amount):
+    player["gold"] += amount
+    print(f"{player['name']} now has {player['gold']} gold.")
+
+def spend_gold(player, amount):
+    if player["gold"] >= amount:
+        player["gold"] -= amount
+        print(f"{player['name']} spent {amount} gold. Remaining: {player['gold']}")
+        return True
+    else:
+        print(f"{player['name']} doesn't have enough gold!")
+        return False

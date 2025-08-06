@@ -25,9 +25,34 @@ from datetime import datetime
 
 
 CURRENT_MOTD = "Welcome to LocalMUD. The chapel awaits."
-VERSION = "v0.7.g — Foundations & Access - Vertical Slice"
-DEV_NOTE = "Primarily working on screenreader mode. Also the GO command accepts UP/DOWN."
+VERSION = "v0.7.91 — The Distraction"
+DEV_NOTE = "Working on adding mini-games."
 
+#List of words to apply to the dirty word filter.
+DIRTY_WORDS = [
+    "damn",
+    "hell",
+    "shit",
+    "fuck",
+    "bastard",
+    "bitch",
+    "ass",
+    "douche",
+    "twat",
+]
+
+DIRECTION_ALIASES = {
+    "n": "north",   "s": "south",
+    "e": "east",    "w": "west",
+    "u": "up",      "d": "down",
+
+    "north": "north",
+    "south": "south",
+    "east":  "east",
+    "west":  "west",
+    "up":    "up",
+    "down":  "down",
+}
 
 MOTD_LIST = [
     "Welcome to LocalMUD. The chapel awaits.",

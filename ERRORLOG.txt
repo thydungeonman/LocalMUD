@@ -121,3 +121,177 @@ Attempted Direction: south
 Target Coordinates: (0, -3, 0, 'chapel')
 Cause: Destination room does not exist.
 ------------------------------
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+
+--- Room Connection Error ---
+Timestamp: 2025-07-28 11:47:25
+Source Room: (0, -2, 0, 'chapel') (Sanctuary)
+Attempted Direction: south
+Target Coordinates: (0, -3, 0, 'chapel')
+Cause: Destination room does not exist.
+------------------------------
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+
+--- Room Connection Error ---
+Timestamp: 2025-08-01 13:53:24
+Source Room: (0, -2, 0, 'chapel') (Sanctuary)
+Attempted Direction: south
+Target Coordinates: (0, -3, 0, 'chapel')
+Cause: Destination room does not exist.
+------------------------------
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+
+--- Room Connection Error ---
+Timestamp: 2025-08-01 14:24:03
+Source Room: (0, -2, 0, 'chapel') (Sanctuary)
+Attempted Direction: south
+Target Coordinates: (0, -3, 0, 'chapel')
+Cause: Destination room does not exist.
+------------------------------
+
+--- Room Connection Error ---
+Timestamp: 2025-08-01 14:24:03
+Source Room: (0, -2, 0, 'chapel') (Sanctuary)
+Attempted Direction: south
+Target Coordinates: (0, -3, 0, 'chapel')
+Cause: Destination room does not exist.
+------------------------------
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+
+--- Room Connection Error ---
+Timestamp: 2025-08-01 14:31:17
+Source Room: (0, -2, 0, 'chapel') (Sanctuary)
+Attempted Direction: south
+Target Coordinates: (0, -3, 0, 'chapel')
+Cause: Destination room does not exist.
+------------------------------
+
+--- Room Connection Error ---
+Timestamp: 2025-08-01 14:31:17
+Source Room: (0, -2, 0, 'chapel') (Sanctuary)
+Attempted Direction: south
+Target Coordinates: (0, -3, 0, 'chapel')
+Cause: Destination room does not exist.
+------------------------------
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+
+=== Room Link Diagnostics ===
+Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+

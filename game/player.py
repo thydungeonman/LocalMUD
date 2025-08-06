@@ -22,6 +22,7 @@ player = {
     "name": "Hero",
     "location": (0, 0, 0, "chapel"),
     "inventory": [],
+    "visited": {(0, 0)},    # seed with starting coords
     "hp": 6,
     "max_hp": 6,
     "ac": 7,  # Armor Class (descending) lower is better
@@ -33,9 +34,11 @@ player = {
     "cha": 11, #npc reactions, hirelings
     "level": 1, 
     "xp": 0,
+    "gold": 100,  # 💰 Starting gold
     "status": [],
     "flags": {},
     "curse_count": 0,  # Added for dirty word tracking
     "verbose_travel": False,
-    "screen_reader_mode": True
+    "screen_reader_mode": True,
+    "debug_mode": False,
 }

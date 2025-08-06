@@ -43,7 +43,7 @@ The world learns to listen. Players reach deeper.
 The chapel reveals an exterior. Roads whisper possibilities.
 
 - Build prototype Overworld with non-chapel rooms
-- Begin mini-map system (basic 2D grid or abstract breadcrumb trail)
+
 - Dev commands: teleport, reveal visited, flag fog zones
 - Revisit prompt system: altered descriptions on second visit?
 

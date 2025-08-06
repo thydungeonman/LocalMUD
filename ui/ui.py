@@ -21,23 +21,35 @@ Dev Notes:
 
 import curses
 import textwrap
+import os
 
 def wrap_text(text, width):
     return textwrap.wrap(text, width)
     
+def draw_wrapped(stdscr, y, x, text, width):
+    """
+    Wrap 'text' to 'width', then stdscr.addstr each line starting at (y, x).
+    Returns the number of lines drawn.
+    """
+    lines = wrap_text(text, width)
+    for i, line in enumerate(lines):
+        stdscr.addstr(y + i, x, line)
+    return len(lines)
+
 def show_title_screen(stdscr, motd, player):
     options = ["New Game", "Settings", "Quit"]
     selected = 0
 
+    # Load intro.txt from assets folder
+    intro_path = os.path.join("assets", "intro.txt")
+    try:
+        with open(intro_path, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+    except FileNotFoundError:
+        lines = ["Welcome to LocalMUD\n"]
+
     while True:
         stdscr.clear()
-
-        # Load intro.txt
-        try:
-            with open("intro.txt", "r") as f:
-                lines = f.readlines()
-        except FileNotFoundError:
-            lines = ["Welcome to LocalMUD\n"]
 
         # Display intro splash
         for i, line in enumerate(lines):
@@ -74,6 +86,7 @@ def show_settings_menu(stdscr, player):
         "Max HP on Character Creation",
         "Verbose Travel Output",
         "Screen Reader Mode",
+        "Debug Mode",
         "Return to game"
     ]
 
@@ -83,15 +96,23 @@ def show_settings_menu(stdscr, player):
 
         for i, option in enumerate(options):
             prefix = "→ " if i == selected else "   "
+
             if option == "Max HP on Character Creation":
                 status = "[ON]" if player.get("max_hp_bonus") else "[OFF]"
                 stdscr.addstr(4 + i, 6, f"{prefix}{option} {status}")
+
             elif option == "Verbose Travel Output":
                 status = "[ON]" if player.get("verbose_travel") else "[OFF]"
                 stdscr.addstr(4 + i, 6, f"{prefix}{option} {status}")
+
             elif option == "Screen Reader Mode":
                 status = "[ON]" if player.get("screen_reader_mode") else "[OFF]"
                 stdscr.addstr(4 + i, 6, f"{prefix}{option} {status}")
+
+            elif option == "Debug Mode":
+                status = "[ON]" if player.get("debug_mode") else "[OFF]"
+                stdscr.addstr(4 + i, 6, f"{prefix}{option} {status}")
+
             else:
                 stdscr.addstr(4 + i, 6, prefix + option)
 
@@ -112,7 +133,10 @@ def show_settings_menu(stdscr, player):
                 if player["screen_reader_mode"]:
                     return "restart"
             elif selected == 3:
+                player["debug_mode"] = not player.get("debug_mode", False)
+            elif selected == 4:
                 return
+
 
 
 
@@ -165,7 +189,13 @@ def draw_ui(stdscr, game_state, player, rooms, message_log):
     # ─── Room Info ───
     room = rooms[game_state["current_room"]]
     stdscr.addstr(2, 2, f"Location: {room['name']}"[: width - 4])
-    stdscr.addstr(3, 2, room["description"][: width - 4])
+
+    # room description (wrapped)
+    desc_y = 3
+    desc_x = 2
+    desc_width = width - 4
+    desc = room["description"]
+    lines_used = draw_wrapped(stdscr, desc_y, desc_x, desc, desc_width)
 
     # ─── Message Log ───
     max_lines = height - 7

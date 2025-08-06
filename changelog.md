@@ -8,7 +8,7 @@ Color Support: Use curses.color_pair() to highlight items/NPCs in logs.
 -Create seperate lists of backstories for each class
 -XP command, display only XP
 
-Expand on NPC dialog with father Ansel
+
 
 When the ORB is placed:
 
@@ -21,10 +21,10 @@ A sudden tremor shakes the chapel. Dust falls from the ceiling as the orb's ligh
 The Oracle's voice turns urgent, fraying at the edges:
 "But you have also awakened that which should have slept... The Echo Sovereign stirs in its tomb, and it hungers for the light you carry. Go quickly. The balance is undone."
 The light snuffs out. Silence returns heavier than before.
--Look should display the title of the room.
 
 
 
+✍️ Draft a Contributor Guide for LocalMUD Include setup steps, coding standards, accessibility goals, and collaboration etiquette once Git is fully integrated.
 
 
 🧠 Suggested Engine Priorities Before Overworld
@@ -37,6 +37,46 @@ Player state encapsulation Consider wrapping player in a Player class or at leas
 Event hooks Add lightweight hooks like on_enter_room() or on_gain_xp() so future systems (e.g. Sovereign whispers) can plug in without rewriting core logic.
 
 Dev tools expansion Add a devmode toggle and commands like teleport, reveal, dump_state, etc. These will be invaluable during Overworld testing.
+
+
+
+
+
+
+
+### 🗺️ v0.7.91 — “The Distraction” - 2025-08-06
+
+### Added
+- [System] `player.py` now tracks gold.
+- [Minigames] Added blackjack and dice high/low.
+- [Settings] Added a debug mode to the settings menu.
+- [Parser] Added `DEBUG` command (dev-only) to trigger minigames, heal the player, and grant gold.
+- [System] Added `world.py` to track the game state for a persistant world.
+- [Documentation] Added `DataDictionary.md` to map out the sub directories and each file and what they do.
+
+### Changed
+- [System] Refactored codebase into subdirectories (`core/`, `ui/`, `assets/`, etc.) to improve modularity and scalability.
+
+### Fixed
+- [UI] Resolved missing intro splash due to incorrect file path.
+
+### Notes
+- This update lays groundwork for future economy mechanics. Refactor was smoother than expected, and the intro splash now loads correctly from assets/.
+
+---
+
+### 🗺️ v0.7.9 — “Paths & Places” - 2025-08-01
+
+### Added
+- [Parser] Added "Talk To [NPC] About [Topic] command.
+- [System] Added Npcs.py to handle npc data.
+- [Parser] NPCs are now announced to the user when the 'LOOK' command is used while one is present.
+
+### Changed
+- [Parser] Removed the confirmation screen when selecting "New Game" on the title screen.
+
+### Fixed
+- [World] Fixed a spelling error in the room "Vault of the Nameless Dead".
 
 ---
 

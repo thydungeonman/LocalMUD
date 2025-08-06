@@ -33,72 +33,7 @@ Dev Notes:
 
 """
 
-# 📚 NPC Structure Reference
-# 
-# Each NPC in the 'npcs' dictionary follows this format:
-#
-# {
-#     "id": "father_ansel",               # Unique identifier for referencing in commands
-#     "name": "Father Ansel",             # Display name
-#     "type": "stationary",               # NPC type: 'stationary' or 'drifter'
-#     "greeting": "NPC says this...",     # Ambient line printed when entering room
-#            "idle_actions": [
-#                "Father Ansel flips slowly through a hymnal.",
-#                "He hums a half-remembered chant beneath his breath.",
-#                "His eyes drift toward the stained glass, unblinking.",
-#                "He traces a circle in the dust with one finger."
-#            ],
-#     "triggers": [                       # Optional list of conditional responses
-#         {
-#             "condition": "player_xp > 5",
-#             "response": "'You walk heavier now...'",
-#         }
-#     ],
-#     "lifecycle": {                      # Optional for drifter NPCs
-#         "arrival_chance": 0.5,          # Chance to appear each turn (0.0 - 1.0)
-#         "stay_turns": 3,                # How long NPC remains before leaving
-#         "departure_text": "'Farewell...'"  # Optional farewell line
-#     }
-# }
 
-
-
-npcs = {
-    (0, -2, 0, "chapel"): [
-        {
-            "id": "father_ansel",
-            "name": "Father Ansel",
-            "type": "stationary",
-            "greeting": "He glances at you. 'The marrow remembers, even if the bones forget.'",
-            "idle_actions": [
-                "Father Ansel flips slowly through a hymnal.",
-                "He hums a half-remembered chant beneath his breath.",
-                "His eyes drift toward the stained glass, unblinking.",
-                "He traces a circle in the dust with one finger."
-            ],
-            "triggers": [
-                {
-                    "condition": "player_xp > 5",
-                    "response": "'You walk heavier now. The Echo Sovereign sees your steps.'"
-                }
-            ]
-        }
-    ],
-    (2, 0, 0, "market"): [
-        {
-            "id": "glim_merc",
-            "name": "Glim",
-            "type": "drifter",
-            "greeting": "'Don't mind me. Just passin' through—like thoughts on the wind.'",
-            "idle_actions": [],
-            "lifecycle": {
-                "arrival_chance": 0.5,
-                "stay_turns": 3,
-                "departure_text": "'Later, stranger. Dust calls.'"
-            }
-        }
-    ]
-}
 
 
 rooms = {
@@ -143,7 +78,7 @@ rooms = {
     },
 
         (0, 1, 0, "chapel"): {
-        "name": "Vault of the Namless Dead",
+        "name": "Vault of the Nameless Dead",
         "description": "A dusty mausoleum with many old graves.",
         "visited": False,
         "look_description": "Graves line the walls top to bottom. Some are too worn to read. Light flickers gently through the adjacent rooms.",
