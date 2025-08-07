@@ -349,6 +349,12 @@ def handle_command(
     if tokens[0] == "clear":
         message_log.clear()
         return "Screen cleared."
+        
+    # CLS
+    if tokens[0] == "cls":
+        message_log.clear()
+        return "Fine, I’ll clear the screen. But just so you know, I’m judging you."
+
 
     # MOTD
     if tokens[0] == "motd":
