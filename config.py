@@ -18,15 +18,15 @@ Dev Notes:
 """
 
 
-
+### 🗺️ v0.8.0 — “The Dawn" — 2025-08-07
 
 import random
 from datetime import datetime
 
 
 CURRENT_MOTD = "Welcome to LocalMUD. The chapel awaits."
-VERSION = "v0.7.91 — The Distraction"
-DEV_NOTE = "Working on adding mini-games."
+VERSION = "v0.8.0 — The Dawn"
+DEV_NOTE = "Started work on the overworld."
 
 #List of words to apply to the dirty word filter.
 DIRTY_WORDS = [

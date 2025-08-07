@@ -1,0 +1,66 @@
+2025-08-07 10:41:33,961 [ERROR] === Room Link Diagnostics ===
+2025-08-07 10:41:33,962 [ERROR] Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
+2025-08-07 10:41:35,769 [ERROR] 
+--- Room Connection Error ---
+Source Room: (0, -2, 0, 'chapel') (Sanctuary)
+Attempted Direction: south
+Target Coordinates: (0, -3, 0, 'chapel')
+Cause: Destination room does not exist.
+------------------------------
+
+2025-08-07 10:41:35,959 [ERROR] 
+--- Room Connection Error ---
+Source Room: (0, -2, 0, 'chapel') (Sanctuary)
+Attempted Direction: south
+Target Coordinates: (0, -3, 0, 'chapel')
+Cause: Destination room does not exist.
+------------------------------
+
+2025-08-07 10:41:36,468 [ERROR] 
+--- Room Connection Error ---
+Source Room: (0, -2, 0, 'chapel') (Sanctuary)
+Attempted Direction: south
+Target Coordinates: (0, -3, 0, 'chapel')
+Cause: Destination room does not exist.
+------------------------------
+
+2025-08-07 10:41:36,721 [ERROR] 
+--- Room Connection Error ---
+Source Room: (0, -2, 0, 'chapel') (Sanctuary)
+Attempted Direction: south
+Target Coordinates: (0, -3, 0, 'chapel')
+Cause: Destination room does not exist.
+------------------------------
+
+2025-08-07 10:41:36,912 [ERROR] 
+--- Room Connection Error ---
+Source Room: (0, -2, 0, 'chapel') (Sanctuary)
+Attempted Direction: south
+Target Coordinates: (0, -3, 0, 'chapel')
+Cause: Destination room does not exist.
+------------------------------
+
+2025-08-07 10:41:37,103 [ERROR] 
+--- Room Connection Error ---
+Source Room: (0, -2, 0, 'chapel') (Sanctuary)
+Attempted Direction: south
+Target Coordinates: (0, -3, 0, 'chapel')
+Cause: Destination room does not exist.
+------------------------------
+
+2025-08-07 10:41:37,292 [ERROR] 
+--- Room Connection Error ---
+Source Room: (0, -2, 0, 'chapel') (Sanctuary)
+Attempted Direction: south
+Target Coordinates: (0, -3, 0, 'chapel')
+Cause: Destination room does not exist.
+------------------------------
+
+2025-08-07 10:41:37,418 [ERROR] 
+--- Room Connection Error ---
+Source Room: (0, -2, 0, 'chapel') (Sanctuary)
+Attempted Direction: south
+Target Coordinates: (0, -3, 0, 'chapel')
+Cause: Destination room does not exist.
+------------------------------
+

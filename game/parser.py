@@ -14,34 +14,9 @@ from datetime  import datetime
 import traceback
 import random
 import curses
-
-def log_room_error(current_room, attempted_coords, attempted_direction, rooms):
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    with open("ERRORLOG.txt", "a") as log_file:
-        log_file.write(f"\n--- Room Connection Error ---\n")
-        log_file.write(f"Timestamp: {timestamp}\n")
-        log_file.write(f"Source Room: {current_room} ({rooms[current_room]['name']})\n")
-        log_file.write(f"Attempted Direction: {attempted_direction}\n")
-        log_file.write(f"Target Coordinates: {attempted_coords}\n")
-        log_file.write(f"Cause: Destination room does not exist.\n")
-        log_file.write(f"------------------------------\n")
+from utils.log_manager import log_room_error, verify_room_links
 
 
-def verify_room_links(rooms):
-    broken = []
-    for room_key, room_data in rooms.items():
-        for direction, target in room_data.get("exits", {}).items():
-            if target not in rooms:
-                broken.append(
-                    f"Broken exit from {room_data['name']} ({room_key}) going "
-                    f"{direction} to {target}"
-                )
-    if broken:
-        with open("ERRORLOG.txt", "a") as log_file:
-            log_file.write("=== Room Link Diagnostics ===\n")
-            for line in broken:
-                log_file.write(line + "\n")
-            log_file.write("\n")
 
 def run_curses_game(game_func):
     def wrapper(stdscr):

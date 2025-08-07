@@ -14,7 +14,8 @@ from game.character import (
     get_modifier,
     create_character_non_curses
 )
-
+from utils.log_manager import cleanup_old_logs
+cleanup_old_logs()
 
 def return_to_title(stdscr):
     curses.flash()

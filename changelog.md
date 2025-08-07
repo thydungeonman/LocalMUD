@@ -1,48 +1,38 @@
 # Changelog
 
-GOALS:
--Add a wait command.
--Fix the screenwrapping issue.
-Command History: Let players scroll through past commands with arrow keys.
-Color Support: Use curses.color_pair() to highlight items/NPCs in logs.
--Create seperate lists of backstories for each class
--XP command, display only XP
 
 
+### 🗺️ v0.8.00 — “The Dawn" — 2025-08-07
 
-When the ORB is placed:
+### Added
+- [Documentation] Added `todo.txt`. Goals will no longer be tracked by haphazardly dumping them at the top of the changelog.
+- [World] Introduced `region_templates.py` in `/world` for defining region layouts and room templates.
+- [World] Created `room_builder.py` with:
+  - `build_region(region_name, bidirectional=True)` to instantiate rooms and wire up exits.
+  - `build_room(room_id, tmpl)` to turn a template into a room dictionary.
+  - `connect_rooms(rooms, bidirectional=True)` for resolving exits and automatic reverse links.
+  - Demo loader under `if __name__ == "__main__":` for quick local testing.
+- [World] Added stubs for future `/world` modules:
+  - `npc_spawner.py` for NPC population logic.
+  - `item_distributor.py` for loot and item placement.
+  - `world_state.py` for persisting dynamic world variables.
+- [Docs] Updated `datadictionary.md` to include the new `/world` directory and describe its components.
 
-The orb flares with a sickly light as the air hums—a sound like a thousand whispers tangled together.
-From the shadows of the mausoleum, a voice scrapes against your mind:
-"You... you who would seek answers from the dead. I am the Oracle of Eldermere, and your touch has broken the seal of ages. Listen well, mortal, for the cost of knowledge is now your burden."
-The voice softens, almost weary:
-"To save your land, go west—where the blackened stones of {OLD_VILLAGE} crumble. Its people once kept the old ways. Revive their rites, and you may yet stem the tide."
-A sudden tremor shakes the chapel. Dust falls from the ceiling as the orb's light pulses violently.
-The Oracle's voice turns urgent, fraying at the edges:
-"But you have also awakened that which should have slept... The Echo Sovereign stirs in its tomb, and it hungers for the light you carry. Go quickly. The balance is undone."
-The light snuffs out. Silence returns heavier than before.
+### Changed
+- [Docs] Refined descriptions and formatting in `datadictionary.md` to reflect new world-generation files.
+- [Room Builder] Enhanced logging in `room_builder.py` to warn about exits pointing to undefined room IDs.
+- [Logging] Cleaned up error logging by centralizing all log output through `utils/log_manager.py`, standardizing message formats (timestamp, level, context), and pruning duplicate or noisy entries in `ERRORLOG.txt`.
+- [System] Migrated codebase to GitHub.
 
+### Known Issues
+- [Parser] 'help' command causes game to crash.
+- [Minigames] Still some weirdness with how blackjack displays messages.
+- [Documentation] readme.me is out of date.
 
+### Notes
+- The concept of the overworld has changed to a dynamic procedural generation method rather than hand crafted rooms. Dungeons and locations will remain hand crafted. This is a huge change in direction.
 
-✍️ Draft a Contributor Guide for LocalMUD Include setup steps, coding standards, accessibility goals, and collaboration etiquette once Git is fully integrated.
-
-
-🧠 Suggested Engine Priorities Before Overworld
-Room metadata standardization Ensure every room has visited, look_description, and maybe tags or region.
-
-Flexible rendering modes Prep for Non-Curses mode with a clean abstraction layer: render_text() vs render_ui().
-
-Player state encapsulation Consider wrapping player in a Player class or at least a player_state module to keep logic centralized.
-
-Event hooks Add lightweight hooks like on_enter_room() or on_gain_xp() so future systems (e.g. Sovereign whispers) can plug in without rewriting core logic.
-
-Dev tools expansion Add a devmode toggle and commands like teleport, reveal, dump_state, etc. These will be invaluable during Overworld testing.
-
-
-
-
-
-
+---
 
 ### 🗺️ v0.7.91 — “The Distraction” - 2025-08-06
 

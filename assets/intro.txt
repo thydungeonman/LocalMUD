@@ -7,7 +7,7 @@
                                                
               LOCALMUD
 
-        Version v0.7.91 - "The Distraction"
+        Version v0.8.0 — “The Dawn"
 
 --------------------------------------------------
 A robust text adventure/RPG in the spirit of classic MUDs except running totally offline!!
