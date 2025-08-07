@@ -7,7 +7,7 @@
                                                
               LOCALMUD
 
-        Version v0.8.0 — “The Dawn"
+        Version v0.8.1 — “The Dawn"
 
 --------------------------------------------------
 A robust text adventure/RPG in the spirit of classic MUDs except running totally offline!!

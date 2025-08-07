@@ -254,6 +254,10 @@ def handle_command(
     if tokens[0] == "about":
         return [f"LocalMUD {VERSION}", DEV_NOTE]
 
+    # DIR
+    if tokens[0] == "dir":
+        return [f"Bro, this isn't DOS. Sorry."]
+
     # TITLE
     if tokens[0] == "title":
         return "confirm_title"

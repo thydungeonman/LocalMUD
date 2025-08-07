@@ -18,7 +18,7 @@ Dev Notes:
 """
 
 
-### 🗺️ v0.8.0 — “The Dawn" — 2025-08-07
+### 🗺️ v0.8.1 — “The Dawn" — 2025-08-07
 
 import random
 from datetime import datetime
