@@ -6,7 +6,7 @@ This is a personal game project developed by Alex, originally sparked by a desir
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 - Clone the repository
 - Run `main.py` to begin the game
@@ -17,7 +17,7 @@ Requires Python 3.13+ and a terminal capable of running curses-based interfaces.
 
 ---
 
-## 🧠 Features
+## Features
 
 - Character creation with stat rolling, modifiers, and class/background selection
 - Immersive intro narration and a message log that scrolls with parser output
@@ -27,19 +27,19 @@ Requires Python 3.13+ and a terminal capable of running curses-based interfaces.
 
 ---
 
-## 📜 Roadmap
+## Roadmap
 
 Milestones that guide LocalMUD’s evolution—where mechanics grow from echoes into myth.
 
 
-### 🧠 v0.7.6 — “Foundations & Access (additional)”
+### v0.7.6 — “Foundations & Access (additional)”
 The world learns to listen. Players reach deeper.
 
 - Add screen reader-friendly Non-Curses mode
 - Toggle verbose travel output for immersive navigation
 - Header redesign to show XP meter
 
-### 🗺️ v0.7.9 — “Paths & Places”
+### v0.7.9 — “Paths & Places”
 The chapel reveals an exterior. Roads whisper possibilities.
 
 - Build prototype Overworld with non-chapel rooms
@@ -47,7 +47,7 @@ The chapel reveals an exterior. Roads whisper possibilities.
 - Dev commands: teleport, reveal visited, flag fog zones
 - Revisit prompt system: altered descriptions on second visit?
 
-### 🧠 v0.8.0 — “Persistence”
+### v0.8.0 — “Persistence”
 The Echo Sovereign watches what you remember.
 
 - Save/load system with full player state tracking
@@ -56,7 +56,7 @@ The Echo Sovereign watches what you remember.
 - Orb modifiers: corrupted/benevolent seeds change world flavor
 - Expanded NPC behavior: dialogue trees, memory-aware responses
 
-### 🔮 v0.9.0 — “Voices in the Stone” *(Tentative)*
+### v0.9.0 — “Voices in the Stone” *(Tentative)*
 The world speaks with intent.
 
 - Help system for all parser commands
@@ -66,7 +66,7 @@ The world speaks with intent.
 
 ---
 
-## 🕯️ Lore Fragments
+## Lore Fragments
 
 - The Oracle once served Eldermere, now slumbers in its ruined chapel
 - The Glowing Orb reactivates ancient forces—but also awakens the Echo Sovereign
@@ -81,7 +81,7 @@ The world speaks with intent.
 
 ---
 
-## 🧪 Contact & Feedback
+## Contact & Feedback
 
 Have feedback or want to contribute experimental ideas, cursed relics, or parser quirks? Contact Alex directly or invoke `patchnotes` in-game (coming soon!).
 
@@ -111,15 +111,15 @@ The parser is lightweight. The lore is deep. The spoon is bent.
 
 ---
 
-## 📜 License
+## License
 
 LocalMUD is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 You are free to use, modify, distribute, and adapt this software for personal or commercial purposes, provided that the original copyright notice and this license are included in all copies or substantial portions of the software.
 
 **MIT License Summary:**
-- ✅ Commercial use  
-- ✅ Modification  
-- ✅ Distribution  
-- ✅ Private use  
-- ❌ No warranty
+-Commercial use  
+-Modification  
+-Distribution  
+-Private use  
+-No warranty
