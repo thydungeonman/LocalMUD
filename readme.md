@@ -111,6 +111,15 @@ The parser is lightweight. The lore is deep. The spoon is bent.
 
 ---
 
-## License
+## 📜 License
 
-This project is currently closed-source and intended for personal development and experimentation. If you’re interested in contributing or adapting LocalMUD, reach out to Alex for permission.
+LocalMUD is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+You are free to use, modify, distribute, and adapt this software for personal or commercial purposes, provided that the original copyright notice and this license are included in all copies or substantial portions of the software.
+
+**MIT License Summary:**
+- ✅ Commercial use  
+- ✅ Modification  
+- ✅ Distribution  
+- ✅ Private use  
+- ❌ No warranty

@@ -65,5 +65,12 @@ _Useful for Overworld testing_
 > **"But you have also awakened that which should have slept... The Echo Sovereign stirs in its tomb, and it hungers for the light you carry. Go quickly. The balance is undone."**  
 > The light snuffs out. Silence returns heavier than before.
 
+### Additional notes
+
+# TODO: In future, consider parser modability via command registry and mod loader.
+# Idea: mods/doom_mod.py with register(register_command) pattern.
+# Danger: May consume entire dev cycle. Proceed only when ready.
+
+
 ---
 
