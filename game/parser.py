@@ -14,7 +14,7 @@ from datetime  import datetime
 import traceback
 import random
 import curses
-from utils.log_manager import log_room_error, verify_room_links
+from utils.log_manager import log_room_error, verify_room_links, prune_error_logs, log_manager  
 
 
 
@@ -316,9 +316,9 @@ def handle_command(
         if len(tokens) < 2:
             return (
                 "Specify a debug action. Example: DEBUG BLACKJACK\n"
-                " Available commands: BLACKJACK, DICEHIGHLOW, GIVEGOLD, HEAL"
+                " Available commands: BLACKJACK, DICEHIGHLOW, GIVEGOLD, HEAL,\n"
+                " PRUNELOGS,"
             )
-
 
         action = tokens[1].lower()
 
@@ -340,6 +340,11 @@ def handle_command(
             amount = int(tokens[2])
             player["gold"] = player.get("gold", 0) + amount
             return f"Gave {amount} gold. Player now has {player['gold']} gold."
+
+        elif action == "prunelogs":
+            result = log_manager.prune_error_logs()
+            return f"[DEBUG] {result}"
+
 
         return f"Unknown debug action: {action}"
 
