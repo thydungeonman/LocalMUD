@@ -1,6 +1,19 @@
 # Changelog
 
+### 🗺️ v0.8.1 -  
 
+### Added
+- [Parser] Added an easter egg when the user types "DIR" or "CLS".
+
+### Fixed
+- [System] Fixed a broken import statement that was causing the game to crash at startup for days.
+
+### Known Issues
+- [Parser] 'help' command causes game to crash.
+- [Minigames] Still some weirdness with how blackjack displays messages.
+- [Documentation] readme.me is out of date.
+
+---
 
 ### 🗺️ v0.8.00 — “The Dawn" — 2025-08-07
 

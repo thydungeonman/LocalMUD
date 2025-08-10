@@ -14,7 +14,9 @@ from datetime  import datetime
 import traceback
 import random
 import curses
-from utils.log_manager import log_room_error, verify_room_links, prune_error_logs, log_manager  
+from utils.log_manager import log_room_error, verify_room_links, prune_error_logs
+
+
 
 
 
