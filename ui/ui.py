@@ -187,7 +187,15 @@ def draw_ui(stdscr, game_state, player, rooms, message_log):
 
 
     # ─── Room Info ───
-    room = rooms[game_state["current_room"]]
+    from utils.helpers import normalize_room_id  # if placed in helpers.py
+
+    room_id = normalize_room_id(game_state["current_room"])
+    room = rooms.get(room_id, {
+        "name": "Unknown",
+        "description": "You seem to be nowhere. This is likely a bug.",
+        "exits": {}
+    })
+
     stdscr.addstr(2, 2, f"Location: {room['name']}"[: width - 4])
 
     # room description (wrapped)

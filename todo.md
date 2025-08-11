@@ -74,3 +74,42 @@ _Useful for Overworld testing_
 
 ---
 
+
+# ✅ LocalMUD Region Support Checklist
+
+## 🧩 Core Architecture
+- [x] Modular region templates (`build_region()` functions per region)
+- [x] Centralized `load_overworld()` function to aggregate regions
+- [x] Room ID convention (`x_y_z_regionname`) for uniqueness
+- [x] Room dict structure with `name`, `description`, `exits`, etc.
+
+---
+
+## 🏗️ Remaining Tasks
+
+### 🛠️ Handcrafted Region Integration
+- [ ] Translate original chapel room into a valid `build_region()` function `[High]`
+- [ ] Add chapel to `load_overworld()` or create `load_handcrafted()` `[High]`
+- [ ] Link chapel to an existing overworld room (e.g. `fellmore_cliffs_2_2`) `[Medium]`
+
+### 🗺️ Region Metadata & Navigation
+- [ ] Add `region_id` to room data for easier filtering and debugging `[Medium]`
+- [ ] Implement `> map` or `> whereami` to show current region `[Low]`
+- [ ] Add support for region-specific events or modifiers `[Medium]`
+
+### 🔍 Room Loading & Validation
+- [ ] Add `validate_rooms()` to catch missing exits or broken links `[Medium]`
+- [ ] Log missing room errors with context (e.g. `"0_0_0_chapel"` not found) `[High]`
+- [ ] Optionally: add fallback room or recovery command (`> unstuck`) `[Low]`
+
+### 📜 Lore & Flavor Hooks
+- [ ] Add `on_enter` triggers for lore delivery (e.g. Oracle memory fog) `[Medium]`
+- [ ] Add support for ambient text or passive events (`room_modifiers`) `[Low]`
+- [ ] Create reusable lore blocks (e.g. `"oracle_intro"`, `"spirit_warning"`) `[Medium]`
+
+### 🧪 Testing & Debugging
+- [ ] Write test cases for `build_region()` functions `[Medium]`
+- [ ] Confirm parser commands (`> look`, `> inventory`, `> go`) work across regions `[High]`
+- [ ] Confirm overworld and handcrafted rooms coexist without collision `[High]`
+
+
