@@ -1,5 +1,15 @@
 # Changelog
 
+### 🗺️ v0.8.3 — "Finding Ourself" - ???
+
+### Added
+- [Documentation] Added documentation for Grimoir Gambit, a planned collectable card game.
+- [System] Added new functions to utils/helpers.py to assist with room ID translation.
+
+
+
+---
+
 ### 🗺️ v0.8.2 — “The Cartographer’s Backbone” — 2025-08-11
 
 ### Added
