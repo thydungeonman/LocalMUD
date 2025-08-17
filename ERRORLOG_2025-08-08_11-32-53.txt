@@ -1,6 +1,0 @@
-2025-08-08 11:33:34,630 [ERROR] === Room Link Diagnostics ===
-2025-08-08 11:33:34,631 [ERROR] Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
-2025-08-08 11:33:51,482 [ERROR] === Room Link Diagnostics ===
-2025-08-08 11:33:51,482 [ERROR] Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
-2025-08-08 11:34:13,667 [ERROR] === Room Link Diagnostics ===
-2025-08-08 11:34:13,667 [ERROR] Broken exit from Sanctuary ((0, -2, 0, 'chapel')) going south to (0, -3, 0, 'chapel')
