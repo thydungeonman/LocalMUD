@@ -5,14 +5,11 @@ import logging
 from datetime import datetime, timedelta
 
 LOG_RETENTION_DAYS = 7
-LOG_DIR = "logs"
-
-# Make sure directory exists
-os.makedirs(LOG_DIR, exist_ok=True)
+LOG_DIR = "."  # Change to "logs/" if you move logs later
 
 # Setup timestamped log file
 timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-log_filename = os.path.join(LOG_DIR, f"ERRORLOG_{timestamp}.txt")
+log_filename = f"ERRORLOG_{timestamp}.txt"
 logging.basicConfig(
     filename=log_filename,
     level=logging.ERROR,

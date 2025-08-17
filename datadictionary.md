@@ -59,16 +59,6 @@ _Core game logic and mechanics._
 
 ---
 
-## `/logs`  
-
-_Error logs._  
-
-| File/Folder           | Description                                   |
-|-----------------------|-----------------------------------------------|
-| *(various txt files)* | Log files Get dumped here                     |
-
----
-
 ## `/minigames`  
 
 _Self-contained mini-games._  
@@ -117,7 +107,6 @@ _Helper modules and utilities._
 | File              | Description                          |
 |-------------------|--------------------------------------|
 | `log_manager.py`  | Manage error and debug logging.      |
-| `helpers.py`      | General-purpose utility functions.   |
 
 ---
 
@@ -125,14 +114,10 @@ _Helper modules and utilities._
 
 _World generation, templates, and future spawners._  
 
-| File                   | Description                                                                                       |
-|------------------------|---------------------------------------------------------------------------------------------------|
-| `region_templates.py`  | Predefined region layouts and room templates.                                                     |
+| File                   | Description                                                                                   |
+|------------------------|-----------------------------------------------------------------------------------------------|
+| `region_templates.py`  | Predefined region layouts and room templates.                                                 |
 | `room_builder.py`      | Logic to construct room dictionaries from templates and wire up exits (bidirectional by default). |
-| `npc_spawner.py`       | (Future) Populate rooms with NPC instances based on spawn rules and densities.                    |
-| `item_distributor.py`  | (Future) Assign items and loot to rooms according to distribution logic and rarity.               |
-| `world_state.py`       | (Optional) Track persistent world variables, dynamic events, and region states.                   |
-| `chapel.py`            |
-| `east_mill_plains.py`  |
-| `fellmore_cliffs.py`   |
-| `overworld.py`         |
+| `npc_spawner.py`       | (Future) Populate rooms with NPC instances based on spawn rules and densities.                |
+| `item_distributor.py`  | (Future) Assign items and loot to rooms according to distribution logic and rarity.           |
+| `world_state.py`       | (Optional) Track persistent world variables, dynamic events, and region states.                |

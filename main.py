@@ -8,8 +8,6 @@ from game.player  import player as initial_player
 from game.parser  import handle_command, verify_room_links
 from config  import get_motd, VERSION, DEV_NOTE
 from ui.ui      import show_title_screen, show_game_over_menu, draw_ui, wrap_text, show_settings_menu 
-from world.overworld import load_overworld
-
 from game.character import (
     create_character,
     get_eligible_classes,
@@ -28,24 +26,6 @@ def return_to_title(stdscr):
 def launch(stdscr, player):
     # Outer loop lets us restart without exiting the program
     while True:
-        
-        # Load game data
-        rooms = load_overworld()
-        items = {}  # Load or define items here
-        NPC_DEFS = {}  # Load or define NPCs here
-        current_motd = get_motd()
-        message_log = []
-
-        # Set starting room
-        player["location"] = "fellmore_cliffs_2_2"
-
-        # Initialize game state
-        game_state = {
-            "current_room": player["location"],
-            "restart": False,
-            "game_over": False
-        }
-    
         # ——— Init per‐run state ———
         game_state = {
             "current_room": (0, 0, 0, "chapel"),

@@ -4,7 +4,6 @@ import logging
 from typing import Dict, Optional
 from . import region_templates
 
-
 # Map directions to their opposites for automatic two-way linking
 OPPOSITE_DIRECTIONS = {
     "north": "south",
@@ -19,28 +18,22 @@ OPPOSITE_DIRECTIONS = {
     "southwest": "northeast",
 }
 
+
 def build_region(region_name: str, bidirectional: bool = True) -> Dict[str, dict]:
     """
     Create all rooms for `region_name` and wire up exits.
     Returns a dict of room_id -> room_dict.
-    Uses static templates if available, otherwise falls back to procedural generation.
     """
     tmpl = region_templates.REGION_TEMPLATES.get(region_name)
     if not tmpl:
         raise ValueError(f"Unknown region: {region_name}")
 
-    # Step 1: Get room templates (static or procedural)
-    if "rooms" in tmpl:
-        room_templates = tmpl["rooms"]
-    else:
-        room_templates = region_templates.generate_room_templates(region_name)
-
-    # Step 2: Instantiate room dicts
+    # Step 1: Instantiate room dicts
     rooms: Dict[str, dict] = {}
-    for room_id, room_t in room_templates.items():
+    for room_id, room_t in tmpl["rooms"].items():
         rooms[room_id] = build_room(room_id, room_t)
 
-    # Step 3: Resolve exits to actual room dicts (or None)
+    # Step 2: Resolve exits to actual room dicts (or None)
     connect_rooms(rooms, bidirectional=bidirectional)
 
     return rooms

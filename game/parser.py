@@ -15,7 +15,7 @@ import traceback
 import random
 import curses
 from utils.log_manager import log_room_error, verify_room_links, prune_error_logs
-from utils.helpers import normalize_room_id
+
 
 
 
@@ -46,12 +46,7 @@ def handle_command(
     - special tokens like "quit" or "confirm_title"
     """
 
-    room_id = normalize_room_id(game_state["current_room"])
-    room = rooms.get(room_id)
-
-    if not room:
-        return [f"ERROR: Room '{room_id}' not found. You may be stuck in the void."]
-
+    room = rooms[game_state["current_room"]]
     tokens = command.lower().split()
 
     # Dirty‐word filter
@@ -269,6 +264,7 @@ def handle_command(
     if tokens[0] == "title":
         return "confirm_title"
 
+        
     # CHARACTER SHEET
     if tokens[0] in ("character", "c"):
         out = []
@@ -293,6 +289,7 @@ def handle_command(
             out.append(f"Curses: {curses}")
         
         return out
+
 
     # HELP
     if tokens[0] == "help":
@@ -350,7 +347,10 @@ def handle_command(
             result = log_manager.prune_error_logs()
             return f"[DEBUG] {result}"
 
+
         return f"Unknown debug action: {action}"
+
+
 
     # CLEAR
     if tokens[0] == "clear":
@@ -361,6 +361,7 @@ def handle_command(
     if tokens[0] == "cls":
         message_log.clear()
         return "Fine, I’ll clear the screen. But just so you know, I’m judging you."
+
 
     # MOTD
     if tokens[0] == "motd":

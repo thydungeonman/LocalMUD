@@ -1,31 +1,17 @@
 # Changelog
 
-### 🗺️ v0.8.2 — “The Cartographer’s Backbone” — 2025-08-11
+### 🗺️ v0.8.1 -  
 
 ### Added
-- [World] Introduced `generate_room_templates()` to procedurally create room layouts from region bounds and terrain flavor.
-- [World] Added new region modules:
-  - `fellmore_cliffs.py`
-  - `east_mill_plains.py`
-  - `chapel.py`
-- [World] Implemented `load_overworld()` to merge multiple regions into a unified room map.
-- [World] Linked `fellmore_cliffs_2_2` to `east_mill_plains_0_2` for cross-region navigation.
-- [Utils] Added `normalize_room_id()` to support flexible room key formats (tuple or string).
-- [Docs] Rebuilt and expanded `datadictionary.md` to cover new region and utility modules.
-- [Docs] Created Markdown checklist for remaining region system tasks.
 - [Parser] Added an easter egg when the user types "DIR" or "CLS".
 
 ### Fixed
-- [UI] Refactored `draw_ui()` and `handle_command()` to use normalized room keys.
-- [System] Ensured handcrafted room formats like `(0, 0, 0, "chapel")` remain compatible.
-- [Logging] Updated `log_manager.py` to write timestamped logs to `logs/ERRORLOG_*.txt`.
-- [Logging] Automatically creates `logs/` directory if missing.
 - [System] Fixed a broken import statement that was causing the game to crash at startup for days.
 
 ### Known Issues
-- [Parser] 'help' command still causes game to crash.
-- [Minigames] Blackjack message formatting remains inconsistent.
-- [Docs] `readme.me` is still out of date.
+- [Parser] 'help' command causes game to crash.
+- [Minigames] Still some weirdness with how blackjack displays messages.
+- [Documentation] readme.me is out of date.
 
 ---
 
