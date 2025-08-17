@@ -73,11 +73,10 @@ _Error logs._
 
 _Self-contained mini-games._  
 
-| File                  | Description                                             |
-|-----------------------|---------------------------------------------------------|
-| `blackjack.py`        | Blackjack mini-game.                                    |
-| `dicehighlow.py`      | Dice-based high/low guessing game.                      |
-| `GrimoireGambit.txt`  | Doumentation for a planned collectable card game.       |
+| File              | Description                               |
+|-------------------|-------------------------------------------|
+| `blackjack.py`    | Blackjack mini-game.                      |
+| `dicehighlow.py`  | Dice-based high/low guessing game.        |
 
 ---
 

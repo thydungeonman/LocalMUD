@@ -152,11 +152,8 @@ def handle_command(
         new_room = room["exits"][direction]
 
         # room exists?
-        normalized_new_room = normalize_room_id(new_room)
-        target_room = get_room(rooms, new_room)
-
-        if not target_room:
-            log_room_error(game_state["current_room"], normalized_new_room, direction, rooms)
+        if new_room not in rooms:
+            log_room_error(game_state["current_room"], new_room, direction, rooms)
             return [
                 f"You step toward the {direction}, but the threshold dissolves—"
                 " no room lies that way."
