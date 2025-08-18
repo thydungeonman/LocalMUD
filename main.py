@@ -37,7 +37,7 @@ def launch(stdscr, player):
         message_log = []
 
         # Set starting room
-        player["location"] = "fellmore_cliffs_2_2"
+        player["location"] = "chapel_0_0_0"
 
         # Initialize game state
         game_state = {
@@ -46,12 +46,6 @@ def launch(stdscr, player):
             "game_over": False
         }
     
-        # ——— Init per‐run state ———
-        game_state = {
-            "current_room": (0, 0, 0, "chapel"),
-            "game_over":    False,
-            "restart":      False
-        }
 
         current_motd = get_motd()
         message_log  = []
@@ -64,7 +58,7 @@ def launch(stdscr, player):
             "max_hp":           10,
             "xp":               0,
             "inventory":        [],
-            "location":         (0, 0, 0, "chapel"),
+            "location":         "chapel_0_0",
             "max_hp_bonus":     False,
             "verbose_travel":   False,
             "screen_reader_mode": False

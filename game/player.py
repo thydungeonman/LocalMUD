@@ -20,9 +20,9 @@ Dev Notes:
 
 player = {
     "name": "Hero",
-    "location": (0, 0, 0, "chapel"),
+    "location": "chapel_0_0_0",
     "inventory": [],
-    "visited": {(0, 0)},    # seed with starting coords
+    "visited": {"chapel_0_0_0"},  # seed with starting coords
     "hp": 6,
     "max_hp": 6,
     "ac": 7,  # Armor Class (descending) lower is better

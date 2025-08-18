@@ -1,5 +1,9 @@
 # Changelog
 
+
+
+
+
 ### 🗺️ v0.8.2 — “The Cartographer’s Backbone” — 2025-08-11
 
 ### Added

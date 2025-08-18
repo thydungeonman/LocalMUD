@@ -2,27 +2,22 @@
 
 from world.fellmore_cliffs import build_region as build_fellmore
 from world.east_mill_plains import build_region as build_east_mill
+from world.chapel import build_region as build_chapel
 
 def load_overworld():
-    """
-    Loads and merges all overworld regions into a single room map.
-    Returns:
-        dict: A merged dictionary of room_id -> room_data
-    """
     overworld_rooms = {}
 
-    # Load individual regions
     fellmore_rooms = build_fellmore(region_id="fellmore_cliffs")
     east_mill_rooms = build_east_mill(region_id="east_mill_plains")
+    chapel_rooms = build_chapel(region_id="chapel")
 
-    # Merge regions into overworld
     overworld_rooms.update(fellmore_rooms)
     overworld_rooms.update(east_mill_rooms)
+    overworld_rooms.update(chapel_rooms)
 
-    # Add inter-region transitions
-    # Example: Fellmore room connects east into East Mill Plains
-    overworld_rooms["fellmore_cliffs_2_2"]["exits"]["east"] = "east_mill_plains_0_2"
-    overworld_rooms["east_mill_plains_0_2"]["exits"]["west"] = "fellmore_cliffs_2_2"
+    # Optional: Add transitions to/from chapel
+    overworld_rooms["chapel_0_-1_0"]["exits"]["south"] = "fellmore_cliffs_1_1"
+    overworld_rooms["fellmore_cliffs_1_1"]["exits"]["north"] = "chapel_0_-1_0"
 
 
     return overworld_rooms
