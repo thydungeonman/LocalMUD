@@ -62,9 +62,6 @@ def prune_error_logs(log_dir=".", archive=False):
         result += f" Skipped {len(skipped)} locked file(s): {', '.join(skipped)}"
     return result
 
-
-
-
 def cleanup_old_logs():
     now = datetime.now()
     for filename in os.listdir(LOG_DIR):
@@ -74,16 +71,17 @@ def cleanup_old_logs():
             if now - file_time > timedelta(days=LOG_RETENTION_DAYS):
                 os.remove(filepath)
 
+
 def log_room_error(current_room, attempted_coords, attempted_direction, rooms):
-    message = (
-        f"\n--- Room Connection Error ---\n"
-        f"Source Room: {current_room} ({rooms[current_room]['name']})\n"
-        f"Attempted Direction: {attempted_direction}\n"
-        f"Target Coordinates: {attempted_coords}\n"
-        f"Cause: Destination room does not exist.\n"
-        f"------------------------------\n"
-    )
-    logging.error(message)
+    found = False
+    for region_name, region_rooms in rooms.items():
+        if attempted_coords in region_rooms:
+            found = True
+            break
+
+    if not found:
+        print(f"Room not found: {attempted_coords} from {current_room} going {attempted_direction}")
+
 
 def verify_room_links(rooms):
     broken = []

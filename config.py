@@ -18,15 +18,15 @@ Dev Notes:
 """
 
 
-### 🗺️ v0.8.1 — “The Dawn" — 2025-08-07
+
 
 import random
 from datetime import datetime
 
 
 CURRENT_MOTD = "Welcome to LocalMUD. The chapel awaits."
-VERSION = "v0.8.0 — The Dawn"
-DEV_NOTE = "Started work on the overworld."
+VERSION = "v0.8.3 - I live Again"
+DEV_NOTE = "Repairing World and NPC functionality after a major refactor."
 
 #List of words to apply to the dirty word filter.
 DIRTY_WORDS = [
@@ -127,7 +127,15 @@ SEASONAL_MOTDS = {
         "You feel unusually powerful. The chapel senses your birthright.",
         "The orb pulses in celebration. It’s your day.",
         "The pews hum a quiet tune. It sounds like a birthday song."
-    ]
+    ],
+    "april_fools": [
+		"You awaken in the chapel. Everything is upside down. Including you.",
+		"The Oracle has been replaced by a rubber chicken. It still knows the path.",
+		"You feel watched. It's the devs. They're laughing.",
+		"The pews are gone. Replaced by beanbags. The tapestries are memes now.",
+		"The vault is sealed. The key is a banana. Good luck.",
+		"You carry no prophecy. Just a kazoo. That will be enough."
+	]
 }
 
 
@@ -143,6 +151,12 @@ def get_motd(debug=False):
     if month == 3 and day == 6:
         seasonal.extend(SEASONAL_MOTDS["birthday"])
         source = "birthday"
+        
+    # April Fools: April 1
+    if month == 4 and day == 1:
+        seasonal.extend(SEASONAL_MOTDS["april_fools"])
+        source = "april_fools"
+
 
     # Halloween: Oct 25–31
     elif month == 10 and day >= 25:

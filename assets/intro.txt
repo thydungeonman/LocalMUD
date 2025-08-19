@@ -7,11 +7,11 @@
                                                
               LOCALMUD
 
-        Version v0.8.1 — “The Dawn"
+        Version v0.8.3 - “I live Again"
 
 --------------------------------------------------
 A robust text adventure/RPG in the spirit of classic MUDs except running totally offline!!
-Explore a grand total of 6 rooms! Wow!    Adventure awaits!
+Explore a grand total of 11 rooms! Wow!    Adventure awaits!
 
 Type 'help' to see available commands.
 Type 'about' to learn more about this build.

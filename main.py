@@ -9,6 +9,7 @@ from game.parser  import handle_command, verify_room_links
 from config  import get_motd, VERSION, DEV_NOTE
 from ui.ui      import show_title_screen, show_game_over_menu, draw_ui, wrap_text, show_settings_menu 
 from world.overworld import load_overworld
+from utils.log_manager import cleanup_old_logs, log_room_error
 
 from game.character import (
     create_character,
@@ -16,7 +17,7 @@ from game.character import (
     get_modifier,
     create_character_non_curses
 )
-from utils.log_manager import cleanup_old_logs
+
 cleanup_old_logs()
 
 def return_to_title(stdscr):
@@ -39,6 +40,24 @@ def launch(stdscr, player):
         # Set starting room
         player["location"] = "chapel_0_0_0"
 
+        """
+        # Validate starting room
+        if player["location"] not in rooms:
+            from utils.log_manager import log_room_error
+            print("[ERROR] Starting room not found. Teleporting to fallback.")
+
+        # Log the error with context
+        log_room_error(
+            current_room="(initial spawn)",
+            attempted_coords=player["location"],
+            attempted_direction="initial spawn",
+            rooms={"(initial spawn)": {"name": "Game Start"}}
+        )
+
+        # Fallback to safe room
+        player["location"] = "chapel_0_0_0" if "chapel_0_0_0" in rooms else list(rooms.keys())[0]
+
+        """
         # Initialize game state
         game_state = {
             "current_room": player["location"],

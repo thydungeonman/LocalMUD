@@ -269,6 +269,20 @@ def handle_command(
     if tokens[0] == "title":
         return "confirm_title"
 
+    # DROP [ITEM]
+    if tokens[0] == "drop" and len(tokens) > 1:
+        item_name = " ".join(tokens[1:])
+        room = rooms[player["location"]]
+
+        if item_name not in player["inventory"]:
+            return f"You don't have '{item_name}' to drop."
+
+        player["inventory"].remove(item_name)
+        room.setdefault("items", []).append(item_name)
+
+        return f"You dropped '{item_name}'. It now lies here."
+
+
     # CHARACTER SHEET
     if tokens[0] in ("character", "c"):
         out = []

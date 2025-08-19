@@ -87,14 +87,6 @@ Have feedback or want to contribute experimental ideas, cursed relics, or parser
 
 ---
 
-## AI Disclosure
-
-LocalMUD is developed collaboratively by Alex with support from Microsoft Copilot, an AI companion. Copilot assists in brainstorming, refactoring, and creative writing, including parser logic, narrative design, and modular architecture suggestions.
-
-All final decisions, code integration, and creative direction are made by Alex. Copilot serves as a tool for inspiration and iteration—not as an autonomous author.
-
----
-
 ## Credits
 
 Created by **Alex**, with collaborative design and storytelling powered by **Copilot**.
@@ -123,3 +115,9 @@ You are free to use, modify, distribute, and adapt this software for personal or
 -Distribution  
 -Private use  
 -No warranty
+
+---
+
+## Ewoks
+
+Ewoks are rad as hell. They had those two movies that were supposed to be for kids, but I remember them starting with the death of a parent. Really dark stuff. Anyway, you ever notice how Ewoks are half as tall as Wookies, an the name is the same but cut in half and backwards? Weird stuff man.

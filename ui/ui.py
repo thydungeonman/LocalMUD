@@ -142,7 +142,7 @@ def show_settings_menu(stdscr, player):
 
 def show_game_over_menu(stdscr, player):
     stdscr.clear()
-    stdscr.addstr(1, 2, "💀 GAME OVER 💀")
+    stdscr.addstr(1, 2, "GAME OVER")
     stdscr.addstr(3, 2, f"Name: {player['name']}")
     stdscr.addstr(4, 2, f"Level: {player['level']}")
     stdscr.addstr(5, 2, f"HP: 0 / {player['max_hp']}")

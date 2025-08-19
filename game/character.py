@@ -24,9 +24,6 @@ import curses
 import copy
 import random
 
-VERSION = "v0.7.91 — The Distraction"
-DEV_NOTE = "Adding mini games to local mud!"
-
 CORE_STATS = ["Strength", "Dexterity", "Intelligence", "Wisdom", "Constitution", "Charisma"]
 
 def safe_getkey(stdscr, timeout=5000):

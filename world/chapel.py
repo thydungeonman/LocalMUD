@@ -73,7 +73,8 @@ def build_region(region_id="chapel"):
             "look_description": "A log book sits open on an ornate display. To the north, a stone archway leads to the mausoleum. To the south is a red curtain leading to the sanctuary.",
             "items": [],
             "exits": {
-                "north": f"{region_id}_0_0_0"
+                "north": f"{region_id}_0_0_0",
+                "south": f"{region_id}_0_-2_0"
             },
             "examine_targets": {
                 "book": "It's filled with the names of the dead and where they are located.",
@@ -97,5 +98,8 @@ def build_region(region_id="chapel"):
                 "lectern": "The lectern stands at the forefront of the sanctuary. Like the pews, it is carved of ancient oak.",
                 "tapestries": "Faded scenes of judgment and harvest."
             }
-        }
+        },
+        
+        
+        
     }

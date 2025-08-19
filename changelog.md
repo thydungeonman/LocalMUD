@@ -1,8 +1,18 @@
 # Changelog
 
 
+### 🗺️ v0.8.3 - “I Live Again"
 
+### Added
+- [Docs] Updated Readme File. Added Easter Egg Ewoks section.
+- [Flavor] The MOTD now has a unique set of messages for when the game is run on April Fools Day.
+- [Parser] Added a "DROP [ITEM]" command to the parser. It does not work yet.
 
+### Fixed
+- [System] Fixed error where the game was launching in the void.
+- [System] Fixed a room linking issue where the Sanctuary was being ommited from the Chapel.
+
+---
 
 ### 🗺️ v0.8.2 — “The Cartographer’s Backbone” — 2025-08-11
 
