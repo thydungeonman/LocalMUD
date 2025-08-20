@@ -77,7 +77,7 @@ def launch(stdscr, player):
             "max_hp":           10,
             "xp":               0,
             "inventory":        [],
-            "location":         "chapel_0_0",
+            "location":         "chapel_0_0_0",
             "max_hp_bonus":     False,
             "verbose_travel":   False,
             "screen_reader_mode": False
@@ -286,7 +286,7 @@ if __name__ == "__main__":
         "max_hp":           10,
         "xp":               0,
         "inventory":        [],
-        "location":         (0, 0, 0, "chapel"),
+        "location":         "chapel_0_0_0",
         "max_hp_bonus":     False,
         "verbose_travel":   False,
         "screen_reader_mode": False
