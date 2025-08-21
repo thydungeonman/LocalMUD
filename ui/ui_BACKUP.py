@@ -1,9 +1,28 @@
+# ui.py
+"""
+LocalMUD — User Interface Module
+
+Handles all curses-based UI rendering, including the intro screen, game over screen,
+and character sheet display. Designed to keep presentation logic separate from game logic.
+
+Typical usage:
+- Called by main.py to show intro and game over
+- Used by parser.py to display output
+
+Author: Alex
+
+Dev Notes:
+- Keep UI functions focused on display only—no game logic.
+- Consider adding color support and accessibility options.
+- Modularize screens (intro, game over, character sheet) for future expansion.
+"""
+
+
+
 import curses
 import textwrap
 import os
-from game.save import save_player  # Already present
-from game.settings import save_settings
-
+from game.save import save_player  # Add this at the top
 
 def wrap_text(text, width):
     return textwrap.wrap(text, width)
@@ -61,7 +80,6 @@ def show_title_screen(stdscr, motd, player):
             elif options[selected] == "Quit":
                 return "quit"
 
-from game.settings import save_settings  # Add this at the top of your file
 
 def show_settings_menu(stdscr, player):
     selected = 0
@@ -109,20 +127,18 @@ def show_settings_menu(stdscr, player):
         elif key == "\n":
             if selected == 0:
                 player["max_hp_bonus"] = not player.get("max_hp_bonus", False)
-                save_settings(player)
             elif selected == 1:
                 player["verbose_travel"] = not player.get("verbose_travel", False)
-                save_settings(player)
             elif selected == 2:
                 player["screen_reader_mode"] = not player.get("screen_reader_mode", False)
-                save_settings(player)
                 if player["screen_reader_mode"]:
                     return "restart"
             elif selected == 3:
                 player["debug_mode"] = not player.get("debug_mode", False)
-                save_settings(player)
             elif selected == 4:
                 return
+
+
 
 
 def show_game_over_menu(stdscr, player):
@@ -169,6 +185,7 @@ def draw_ui(stdscr, game_state, player, rooms, message_log):
     top_bar = f"{title} — HP: {hp}/{max_hp} | Orb: {orb_status}"
 
     stdscr.addstr(0, 2, top_bar[: width - 4])
+
 
     # ─── Room Info ───
     from utils.helpers import normalize_room_id  # if placed in helpers.py

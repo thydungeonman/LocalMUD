@@ -7,6 +7,8 @@
 - [Docs] Updated Readme File. Added Easter Egg Ewoks section.
 - [Flavor] The MOTD now has a unique set of messages for when the game is run on April Fools Day.
 - [Parser] Added a "DROP [ITEM]" command to the parser. It does not work yet.
+- [System] The game will now save settings menu changes to save/settings.json.
+- [System] The foundations of a player are saved to save/player.json, though this is not fully implimented yet.
 
 ### Fixed
 - [System] Fixed error where the game was launching in the void.

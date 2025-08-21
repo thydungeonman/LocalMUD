@@ -10,6 +10,8 @@ from config  import get_motd, VERSION, DEV_NOTE
 from ui.ui      import show_title_screen, show_game_over_menu, draw_ui, wrap_text, show_settings_menu 
 from world.overworld import load_overworld
 from utils.log_manager import cleanup_old_logs, log_room_error
+from game.settings import load_settings
+
 
 from game.character import (
     create_character,
@@ -36,6 +38,8 @@ def launch(stdscr, player):
         NPC_DEFS = {}  # Load or define NPCs here
         current_motd = get_motd()
         message_log = []
+        settings = load_settings()
+        player.update(settings)
 
         # Set starting room
         player["location"] = "chapel_0_0_0"
@@ -69,7 +73,10 @@ def launch(stdscr, player):
         current_motd = get_motd()
         message_log  = []
 
-        # Create initial blank player before title screen
+        # Load settings
+        settings = load_settings()
+
+        # Create default player and inject settings
         player = {
             "name":             "",
             "background":       "",
@@ -80,8 +87,12 @@ def launch(stdscr, player):
             "location":         "chapel_0_0_0",
             "max_hp_bonus":     False,
             "verbose_travel":   False,
-            "screen_reader_mode": False
+            "screen_reader_mode": False,
+            "debug_mode":       False
         }
+
+        player.update(settings)
+
 
         # Show title screen and allow settings access
         choice = show_title_screen(stdscr, current_motd, player)
@@ -278,7 +289,9 @@ def main_loop(stdscr, game_state, player, rooms, items, current_motd, message_lo
 
 
 if __name__ == "__main__":
-    # Initialize blank player for launch()
+
+    # Load settings and initialize player globally
+    settings = load_settings()
     player = {
         "name":             "",
         "background":       "",
@@ -289,8 +302,11 @@ if __name__ == "__main__":
         "location":         "chapel_0_0_0",
         "max_hp_bonus":     False,
         "verbose_travel":   False,
-        "screen_reader_mode": False
+        "screen_reader_mode": False,
+        "debug_mode":       False
     }
+    player.update(settings)
+
 
     if player.get("screen_reader_mode"):
         run_non_curses_mode(player, rooms, items, get_motd(), NPC_DEFS)
