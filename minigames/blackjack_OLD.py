@@ -1,37 +1,21 @@
+# minigames/blackjack.py
+
 import random
 import curses
 
 def play(player, stdscr):
-    # --- Deck Construction ---
-    def build_deck():
-        suits = ["♠", "♥", "♦", "♣"]
-        ranks = {
-            "A": 11,
-            "2": 2, "3": 3, "4": 4, "5": 5, "6": 6,
-            "7": 7, "8": 8, "9": 9, "10": 10,
-            "J": 10, "Q": 10, "K": 10
-        }
-        deck = [{"rank": rank, "suit": suit, "value": value}
-                for suit in suits for rank, value in ranks.items()]
-        random.shuffle(deck)
-        return deck
+    # Helper: draw a random card (2–10, face=10, ace=11)
+    def draw_card():
+        return random.choice([2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 11])
 
-    # --- Draw a Card from Deck ---
-    def draw_card(deck):
-        return deck.pop() if deck else None
-
-    # --- Compute Hand Value ---
+    # Helper: compute hand total, reducing aces from 11 to 1 as needed
     def hand_value(hand):
-        total = sum(card["value"] for card in hand)
-        aces = sum(1 for card in hand if card["rank"] == "A")
+        total = sum(hand)
+        aces = hand.count(11)
         while total > 21 and aces:
             total -= 10
-            aces -= 1
+            aces  -= 1
         return total
-
-    # --- Format Hand for Display ---
-    def format_hand(hand):
-        return " ".join([f"{card['rank']}{card['suit']}" for card in hand])
 
     while True:
         # --- Betting Phase ---
@@ -58,28 +42,28 @@ def play(player, stdscr):
         stdscr.getch()
 
         # --- Initial Deal ---
-        deck = build_deck()
-        player_hand = [draw_card(deck), draw_card(deck)]
-        dealer_hand = [draw_card(deck), draw_card(deck)]
+        player_hand = [draw_card(), draw_card()]
+        dealer_hand = [draw_card(), draw_card()]
 
         # --- Player Turn ---
         busted = False
         while True:
             total = hand_value(player_hand)
             stdscr.clear()
-            stdscr.addstr(2, 2, f"Your hand: {format_hand(player_hand)} (Total: {total})")
-            stdscr.addstr(3, 2, f"Dealer shows: {dealer_hand[0]['rank']}{dealer_hand[0]['suit']}")
+            stdscr.addstr(2, 2, f"Your hand: {player_hand} (Total: {total})")
+            stdscr.addstr(3, 2, f"Dealer shows: {dealer_hand[0]}")
             stdscr.addstr(5, 2, "[H]it or [S]tand?")
             stdscr.refresh()
 
             key = stdscr.getkey().lower()
             if key == "h":
-                player_hand.append(draw_card(deck))
+                player_hand.append(draw_card())
                 total = hand_value(player_hand)
                 if total > 21:
                     busted = True
+                    # Show final busted total
                     stdscr.clear()
-                    stdscr.addstr(2, 2, f"Your hand: {format_hand(player_hand)} (Total: {total})")
+                    stdscr.addstr(2, 2, f"Your hand: {player_hand} (Total: {total})")
                     stdscr.addstr(4, 2, "💥 You busted!")
                     stdscr.addstr(5, 2, f"You lose. -{bet} gold")
                     player['gold'] = max(0, player['gold'] - bet)
@@ -92,24 +76,20 @@ def play(player, stdscr):
 
         # --- Dealer Turn & Outcome ---
         if not busted:
+            # Dealer hits until 17+
             while hand_value(dealer_hand) < 17:
-                dealer_hand.append(draw_card(deck))
+                dealer_hand.append(draw_card())
 
             player_total = hand_value(player_hand)
             dealer_total = hand_value(dealer_hand)
 
             stdscr.clear()
-            stdscr.addstr(2, 2, f"Your hand: {format_hand(player_hand)} (Total: {player_total})")
-            stdscr.addstr(3, 2, f"Dealer hand: {format_hand(dealer_hand)} (Total: {dealer_total})")
+            stdscr.addstr(2, 2, f"Your hand: {player_hand} (Total: {player_total})")
+            stdscr.addstr(3, 2, f"Dealer hand: {dealer_hand} (Total: {dealer_total})")
 
-            if dealer_total > 21:
-                stdscr.addstr(5, 2, "Dealer busted!")
-                stdscr.addstr(6, 2, f"You win! +{bet} gold")
-                player['gold'] += bet
-            elif player_total > dealer_total:
+            if dealer_total > 21 or player_total > dealer_total:
                 stdscr.addstr(5, 2, f"You win! +{bet} gold")
                 player['gold'] += bet
-
             elif player_total == dealer_total:
                 stdscr.addstr(5, 2, "Push. No gold won or lost.")
             else:
@@ -125,3 +105,6 @@ def play(player, stdscr):
         stdscr.refresh()
         if stdscr.getkey().lower() != "y":
             break
+
+
+
