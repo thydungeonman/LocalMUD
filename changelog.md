@@ -11,11 +11,13 @@
 - [System] The foundations of a player are saved to save/player.json, though this is not fully implimented yet.
 
 ### Changed
-- [Minigames] Updated Blackjack to be suit aware. 
+- [Minigames] Updated Blackjack to be suit aware. Generally cleaned up the Blackjack game.
 
 ### Fixed
 - [System] Fixed error where the game was launching in the void.
 - [System] Fixed a room linking issue where the Sanctuary was being ommited from the Chapel.
+- [System] Stats were rerolling by themselves in the character generation processes. 
+- [Parser] 'Help' no longer causes the game to crash
 
 ---
 

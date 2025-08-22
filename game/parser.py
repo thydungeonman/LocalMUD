@@ -18,6 +18,9 @@ from utils.log_manager import log_room_error, verify_room_links, prune_error_log
 from utils.helpers import normalize_room_id
 
 
+COMMANDS = [
+    "look", "go", "take", "drop", "examine [ITEM]", "inventory", "talk", "use", "help", "stats", "quit"
+]
 
 
 def run_curses_game(game_func):
