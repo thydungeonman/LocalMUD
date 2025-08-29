@@ -18,8 +18,6 @@ from utils.log_manager import log_room_error, verify_room_links, prune_error_log
 from utils.helpers import normalize_room_id
 
 
-
-
 def run_curses_game(game_func):
     def wrapper(stdscr):
         curses.curs_set(0)
@@ -245,7 +243,10 @@ def handle_command(
                 data = items.get(inv, {})
                 use_data = data.get("use")
                 if use_data:
-                    if use_data.get("location") == game_state["current_room"]:
+                    item_room = normalize_room_id(use_data.get("location"))
+                    current_room = normalize_room_id(game_state["current_room"])
+
+                    if item_room == current_room:
                         effect  = use_data.get("effect")
                         message = use_data.get("message", f"You use the {inv}.")
                         if effect == "win":
