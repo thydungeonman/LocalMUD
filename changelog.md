@@ -6,7 +6,7 @@
 ### Added
 - [Docs] Updated Readme File. Added Easter Egg Ewoks section.
 - [Flavor] The MOTD now has a unique set of messages for when the game is run on April Fools Day.
-- [Parser] Added a "DROP [ITEM]" command to the parser. It does not work yet.
+- [Parser] Added a "DROP [ITEM]" command to the parser. 
 - [System] The game will now save settings menu changes to save/settings.json.
 - [System] The foundations of a player are saved to save/player.json, though this is not fully implimented yet.
 
@@ -16,6 +16,7 @@
 ### Fixed
 - [System] Fixed error where the game was launching in the void.
 - [System] Fixed a room linking issue where the Sanctuary was being ommited from the Chapel.
+- [System] Fixed the USE/LOOK/EXMAINE commands all referencing the inventory incorrectly. 
 - [System] Stats were rerolling by themselves in the character generation processes. 
 - [Parser] 'Help' no longer causes the game to crash
 

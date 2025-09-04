@@ -7,7 +7,7 @@ def build_region(region_id="chapel"):
             "description": "A quiet chamber with a glowing orb resting on a pedestal.",
             "visited": False,
             "look_description": "Dust motes float in the air. The pedestal is carved with ancient symbols.",
-            "items": ["Glowing Orb"],
+            "items": ["glowing_orb"],
             "exits": {
                 "east": f"{region_id}_1_0_0",
                 "north": f"{region_id}_0_1_0",
@@ -32,12 +32,12 @@ def build_region(region_id="chapel"):
             "triggers": [
                 {
                     "condition": "has_item",
-                    "item": "Glowing Orb",
+                    "item": "glowing_orb",
                     "effect": "win"
                 },
                 {
                     "condition": "requires_item",
-                    "item": "Rusty Key"
+                    "item": "rusty_key"
                 }
             ]
         },
@@ -60,7 +60,7 @@ def build_region(region_id="chapel"):
             "description": "Statues of angels and saints surround a table carved in stone.",
             "visited": False,
             "look_description": "Several statues are pointed towards a table in the center of the room.",
-            "items": ["Rusty Key"],
+            "items": ["rusty_key"],
             "exits": {"west": f"{region_id}_0_1_0"},
             "examine_targets": {
                 "statues": "They stay put when you aren't looking. Blinking is perfectly safe."
