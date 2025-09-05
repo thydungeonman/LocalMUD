@@ -143,7 +143,7 @@ def launch(stdscr, player):
                 message_log.append("")
 
             # Enter main game loop
-            main_loop(stdscr, game_state, player, rooms, items, current_motd, message_log, NPC_DEFS)
+            main_loop(stdscr, game_state, player, rooms, items, current_motd, message_log, NPC_DEFS, log_manager)
 
             if not game_state.get("restart"):
                 break
@@ -217,7 +217,7 @@ def handle_idle_npc_actions(current_room, NPC_DEFS, message_log):
             message_log.append(random.choice(idle_lines))
 
 
-def main_loop(stdscr, game_state, player, rooms, items, current_motd, message_log, NPC_DEFS):
+def main_loop(stdscr, game_state, player, rooms, items, current_motd, message_log, NPC_DEFS, log_manager):
     curses.curs_set(1)
     stdscr.nodelay(False)
 
@@ -249,7 +249,8 @@ def main_loop(stdscr, game_state, player, rooms, items, current_motd, message_lo
             items,
             current_motd,
             message_log,
-            NPC_DEFS
+            NPC_DEFS,
+            log_manager 
         )
 
         # ─── Handle parser output ───

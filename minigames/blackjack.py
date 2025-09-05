@@ -80,7 +80,7 @@ def play(player, stdscr):
                     busted = True
                     stdscr.clear()
                     stdscr.addstr(2, 2, f"Your hand: {format_hand(player_hand)} (Total: {total})")
-                    stdscr.addstr(4, 2, "💥 You busted!")
+                    stdscr.addstr(4, 2, "You busted!")
                     stdscr.addstr(5, 2, f"You lose. -{bet} gold")
                     player['gold'] = max(0, player['gold'] - bet)
                     stdscr.addstr(7, 2, f"Your current gold: {player['gold']}")

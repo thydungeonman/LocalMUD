@@ -65,6 +65,16 @@ CLASS_DESCRIPTIONS = {
 }
 
 
+def safe_getkey(stdscr, timeout=None):
+    if timeout is None:
+        stdscr.timeout(-1)  # Blocking mode
+    else:
+        stdscr.timeout(timeout)
+
+    try:
+        return stdscr.getkey()
+    except:
+        return None
 
 
 def roll_stats():
@@ -115,7 +125,7 @@ def create_character(stdscr, base_player):
         stdscr.addstr(14 + len(eligible_classes), 2, "[A]ccept these stats or [R]eroll?")
         stdscr.refresh()
 
-        key = safe_getkey(stdscr)
+        key = safe_getkey(stdscr, timeout=None)
         if key and key.lower() == "a":
             player["stats"] = stats
             player["modifiers"] = {stat: get_modifier(stats[stat]) for stat in CORE_STATS}
