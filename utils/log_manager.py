@@ -71,7 +71,6 @@ def cleanup_old_logs():
             if now - file_time > timedelta(days=LOG_RETENTION_DAYS):
                 os.remove(filepath)
 
-
 def log_room_error(current_room, attempted_coords, attempted_direction, rooms):
     found = False
     for region_name, region_rooms in rooms.items():
@@ -81,7 +80,6 @@ def log_room_error(current_room, attempted_coords, attempted_direction, rooms):
 
     if not found:
         print(f"Room not found: {attempted_coords} from {current_room} going {attempted_direction}")
-
 
 def verify_room_links(rooms):
     broken = []

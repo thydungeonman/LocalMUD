@@ -362,7 +362,7 @@ def handle_command(
             return f"Gave {amount} gold. Player now has {player['gold']} gold."
 
         elif action == "prunelogs":
-            result = log_manager.prune_error_logs()
+            result = prune_error_logs()
             return f"[DEBUG] {result}"
 
         return f"Unknown debug action: {action}"
