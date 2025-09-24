@@ -9,7 +9,6 @@ Author: Alex
 """
 
 from game.character import CORE_STATS
-from game.items import items as item_registry
 from config    import VERSION, DEV_NOTE, DIRTY_WORDS, DIRECTION_ALIASES
 from datetime  import datetime
 import traceback
@@ -17,11 +16,6 @@ import random
 import curses
 from utils.log_manager import log_room_error, verify_room_links, prune_error_logs
 from utils.helpers import normalize_room_id
-
-
-COMMANDS = [
-    "look", "go", "take", "drop", "examine [ITEM]", "inventory", "talk", "use", "help", "stats", "quit"
-]
 
 
 def run_curses_game(game_func):
@@ -71,27 +65,19 @@ def handle_command(
         return "No command entered."
 
     # EXAMINE
-    if tokens[0] in ("examine", "x") and len(tokens) > 1:
-        target = " ".join(tokens[1:]).strip().lower()
-
-        # Check inventory
-        for item_id in player.get("inventory", []):
-            item_data = item_registry.get(item_id, {})
-            item_name = item_data.get("name", "").lower()
-
-            if target == item_id or target == item_name:
-                return item_data.get(
-                    "examine_text",
-                    f"You examine the {item_data.get('name', item_id)}, but find nothing unusual."
-                )
-
-        # Check room examine targets
+    if tokens[0] in ("examine", "x"):
+        target = " ".join(tokens[1:])
+        # inventory first
+        for inv in player["inventory"]:
+            if inv.lower() == target:
+                data = items.get(inv, {})
+                return data.get("examine_text",
+                                f"You examine the {inv}, but find nothing unusual.")
+        # room examine targets
         desc = room.get("examine_targets", {}).get(target)
         if desc:
             return desc
-
         return "You see nothing special."
-
 
     # -----------------------------------------------------------------------------
     # TALK TO branch:
@@ -207,110 +193,70 @@ def handle_command(
     # LOOK / L
     if tokens[0] in ("look", "l"):
         out = []
-
-        # Items (assign before using)
-        items_here = room.get("items", [])
-
-        # Debugging
-        for i in items_here:
-            print(f"[DEBUG] Item ID: {i}, Name: {item_registry.get(i, {}).get('name')}")
-
-        # Room description
+        # description
         out.append(room.get("look_description", room["description"]))
-
-        # Item display
-        if items_here:
-            item_names = [item_registry.get(i, {}).get("name", i).strip() for i in items_here]
-            out.append("Items here: " + ", ".join(item_names))
-        else:
-            out.append("There are no items here.")
-
+        # items
+        items_here = room.get("items", [])
+        out.append(
+            items_here and "Items here: " + ", ".join(items_here)
+            or "There are no items here."
+        )
         # NPCs
         present_npcs = npcs.get(game_state["current_room"], [])
         if present_npcs:
-            npc_names = [npc.get("name", "Unknown NPC").strip() for npc in present_npcs]
+            npc_names = [npc["name"] for npc in present_npcs]
             out.append("You see here: " + ", ".join(npc_names))
 
-        # Exits
+        # exits
         exits = room.get("exits", {})
         if exits:
-            exit_names = [DIRECTION_ALIASES.get(d, d).capitalize() for d in exits]
+            exit_names = [DIRECTION_ALIASES[d] for d in exits]
             out.append("Exits: " + ", ".join(exit_names))
-        else:
-            out.append("There are no visible exits.")
-
         return out
-
 
     # INVENTORY
     if tokens[0] in ("inventory", "i"):
         inv = player.get("inventory", [])
         if not inv:
-            return ["You are carrying nothing."]
-        
-        out = ["You are carrying:"]
-        for item_id in inv:
-            item_name = item_registry.get(item_id, {}).get("name", item_id)
-            out.append(f"- {item_name}")
-        return out
-
+            return "Your inventory is empty."
+        lines = ["You are carrying:"]
+        for it in inv:
+            desc = items.get(it, {}).get("description", "")
+            lines.append(f"- {it}: {desc}")
+        return lines
 
     # TAKE / GET
-    if tokens[0] in ("take", "get") and len(tokens) > 1:
-        print("[DEBUG] Room items:", room.get("items", []))
-        for item_id in room.get("items", []):
-            item_data = item_registry.get(item_id, {})
-            print(f"[DEBUG] Item ID: {item_id}, Name: {item_data.get('name', '')}")
-
-        want = " ".join(tokens[1:]).strip().lower()
-        room_items = room.get("items", [])
-
-        for item_id in room_items:
-            item_data = item_registry.get(item_id, {})
-            item_name = item_data.get("name", "").lower()
-
-            if want == item_name or want == item_id:
-                player["inventory"].append(item_id)
-                room_items.remove(item_id)
-                return f"You take the {item_data.get('name', item_id)}."
-
+    if tokens[0] in ("take", "get"):
+        want = " ".join(tokens[1:])
+        for it in list(room.get("items", [])):
+            if it.lower() == want:
+                player["inventory"].append(it)
+                room["items"].remove(it)
+                return f"You take the {it}."
         return "That item isn't here."
 
-
-
-
     # USE
-    if tokens[0] == "use" and len(tokens) > 1:
-        want = " ".join(tokens[1:]).strip().lower()
-
-        for item_id in player.get("inventory", []):
-            item_data = item_registry.get(item_id, {})
-            item_name = item_data.get("name", "").lower()
-
-            if want == item_id or want == item_name:
-                use_data = item_data.get("use")
-                display_name = item_data.get("name", item_id)
-
+    if tokens[0] == "use":
+        want = " ".join(tokens[1:])
+        for inv in player.get("inventory", []):
+            if inv.lower() == want:
+                data = items.get(inv, {})
+                use_data = data.get("use")
                 if use_data:
-                    use_location = use_data.get("use_location")
-                    if use_location == game_state["current_room"]:
-                        effect = use_data.get("effect")
-                        message = use_data.get("message", f"You use the {display_name}.")
+                    item_room = normalize_room_id(use_data.get("location"))
+                    current_room = normalize_room_id(game_state["current_room"])
 
+                    if item_room == current_room:
+                        effect  = use_data.get("effect")
+                        message = use_data.get("message", f"You use the {inv}.")
                         if effect == "win":
                             return message
                         if effect == "unlock":
                             rooms[game_state["current_room"]].setdefault("flags", {})["door_unlocked"] = True
                             return message
-
-                        return message  # fallback for other effects
-                    else:
-                        return f"You can't use the {display_name} here."
-                else:
-                    return f"You use the {display_name}, but nothing happens."
-
+                    return f"You can't use the {inv} here."
+                return f"You use the {inv}, but nothing happens."
         return "You don't have that item."
-
 
     # ABOUT
     if tokens[0] == "about":
@@ -326,20 +272,16 @@ def handle_command(
 
     # DROP [ITEM]
     if tokens[0] == "drop" and len(tokens) > 1:
-        want = " ".join(tokens[1:]).strip().lower()
+        item_name = " ".join(tokens[1:])
         room = rooms[player["location"]]
 
-        for item_id in player.get("inventory", []):
-            item_data = item_registry.get(item_id, {})
-            item_name = item_data.get("name", "").lower()
+        if item_name not in player["inventory"]:
+            return f"You don't have '{item_name}' to drop."
 
-            if want == item_id or want == item_name:
-                player["inventory"].remove(item_id)
-                room.setdefault("items", []).append(item_id)
-                return f"You dropped the {item_data.get('name', item_id)}. It now lies here."
+        player["inventory"].remove(item_name)
+        room.setdefault("items", []).append(item_name)
 
-        return f"You don't have '{want}' to drop."
-
+        return f"You dropped '{item_name}'. It now lies here."
 
 
     # CHARACTER SHEET
@@ -420,7 +362,7 @@ def handle_command(
             return f"Gave {amount} gold. Player now has {player['gold']} gold."
 
         elif action == "prunelogs":
-            result = log_manager.prune_error_logs()
+            result = prune_error_logs()
             return f"[DEBUG] {result}"
 
         return f"Unknown debug action: {action}"
