@@ -34,7 +34,7 @@ player = {
     "cha": 11, #npc reactions, hirelings
     "level": 1, 
     "xp": 0,
-    "gold": 100,  # 💰 Starting gold
+    "gold": 100,  # Starting gold
     "status": [],
     "flags": {},
     "curse_count": 0,  # Added for dirty word tracking

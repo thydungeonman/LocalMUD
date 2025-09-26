@@ -25,8 +25,8 @@ from datetime import datetime
 
 
 CURRENT_MOTD = "Welcome to LocalMUD. The chapel awaits."
-VERSION = "v0.8.3 - I live Again"
-DEV_NOTE = "Repairing World and NPC functionality after a major refactor."
+VERSION = "v0.8.4 - “Monsters Arise"
+DEV_NOTE = "Adding monsters and groundwork for combat."
 
 #List of words to apply to the dirty word filter.
 DIRTY_WORDS = [

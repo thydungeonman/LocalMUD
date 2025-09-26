@@ -18,6 +18,14 @@ from utils.log_manager import log_room_error, verify_room_links, prune_error_log
 from utils.helpers import normalize_room_id
 
 
+COMMANDS = [
+    "examine", "talk to", "go",
+    "look", "inventory", "take", "get", "use",
+    "about", "title", "drop", "character", "help",
+    "clear", "motd", "quit", "exit"
+]
+
+
 def run_curses_game(game_func):
     def wrapper(stdscr):
         curses.curs_set(0)
@@ -334,11 +342,16 @@ def handle_command(
             return "Debug mode is not enabled."
 
         if len(tokens) < 2:
-            return (
-                "Specify a debug action. Example: DEBUG BLACKJACK\n"
-                " Available commands: BLACKJACK, DICEHIGHLOW, GIVEGOLD, HEAL,\n"
-                " PRUNELOGS,"
-            )
+            lines = [
+                "Specify a debug action. Example: DEBUG BLACKJACK",
+                "Available commands:",
+                " - BLACKJACK",
+                " - DICEHIGHLOW",
+                " - GIVEGOLD",
+                " - HEAL",
+                " - PRUNELOGS",
+            ]
+            return lines
 
         action = tokens[1].lower()
 

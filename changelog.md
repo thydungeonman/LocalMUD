@@ -1,5 +1,11 @@
 # Changelog
 
+### 🗺️ v0.8.4 - “Monsters Arise"
+
+### Added
+- [System] Created game/monsters.py to house monster data.
+- [System] Created game/combat.py to house the functions that the parser will call during combat.
+---
 
 ### 🗺️ v0.8.3 - “I Live Again"
 
