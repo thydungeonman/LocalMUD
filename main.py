@@ -268,7 +268,7 @@ def main_loop(stdscr, game_state, player, rooms, items, current_motd, message_lo
                     stdscr.addstr(input_y, 4, input_buffer)
                     stdscr.refresh()
 
-            elif key in (curses.KEY_BACKSPACE, 127):
+            elif key in (curses.KEY_BACKSPACE, 127, 8):
                 input_buffer = input_buffer[:-1]
                 stdscr.move(input_y, 4)
                 stdscr.clrtoeol()

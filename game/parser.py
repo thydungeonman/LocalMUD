@@ -348,6 +348,7 @@ def handle_command(
                 "Available commands:",
                 " - BLACKJACK",
                 " - DICEHIGHLOW",
+                " - SLOTS",
                 " - GIVEGOLD",
                 " - HEAL",
                 " - PRUNELOGS",
@@ -359,6 +360,10 @@ def handle_command(
         if action == "blackjack":
             import minigames.blackjack as blackjack
             return run_curses_game(lambda stdscr: blackjack.play(player, stdscr))
+
+        elif action == "slots":
+            import minigames.slots as slots
+            return run_curses_game(lambda stdscr: slots.play_slots(stdscr, player))
 
         elif action == "dicehighlow":
             import minigames.dicehighlow as dicehighlow
