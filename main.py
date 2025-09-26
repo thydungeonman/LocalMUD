@@ -229,16 +229,72 @@ def main_loop(stdscr, game_state, player, rooms, items, current_motd, message_lo
         stdscr.addstr(input_y, 2, "> ")
         stdscr.refresh()
 
-        # ─── Get input via curses ───
-        curses.echo()
-        try:
-            raw = stdscr.getstr(input_y, 4, width - 6).decode().strip()
-        except Exception:
-            raw = ""
+        # ─── Enhanced Input with Command History ───
+        history = game_state.setdefault("command_history", [])
+        history_index = -1
+        input_buffer = ""
+
+        stdscr.move(input_y, 4)
+        stdscr.clrtoeol()
+        curses.curs_set(1)
+        stdscr.refresh()
+
+        while True:
+            key = stdscr.getch()
+
+            if key in (curses.KEY_ENTER, 10, 13):  # Enter
+                raw = input_buffer.strip()
+                break
+
+            elif key == curses.KEY_UP:
+                if history:
+                    history_index = max(0, history_index - 1)
+                    input_buffer = history[history_index]
+                    stdscr.move(input_y, 4)
+                    stdscr.clrtoeol()
+                    stdscr.addstr(input_y, 4, input_buffer)
+                    stdscr.refresh()
+
+            elif key == curses.KEY_DOWN:
+                if history:
+                    history_index += 1
+                    if history_index >= len(history):
+                        history_index = -1
+                        input_buffer = ""
+                    else:
+                        input_buffer = history[history_index]
+                    stdscr.move(input_y, 4)
+                    stdscr.clrtoeol()
+                    stdscr.addstr(input_y, 4, input_buffer)
+                    stdscr.refresh()
+
+            elif key in (curses.KEY_BACKSPACE, 127):
+                input_buffer = input_buffer[:-1]
+                stdscr.move(input_y, 4)
+                stdscr.clrtoeol()
+                stdscr.addstr(input_y, 4, input_buffer)
+                stdscr.refresh()
+
+            elif 32 <= key <= 126:  # Printable characters
+                input_buffer += chr(key)
+                stdscr.addstr(input_y, 4 + len(input_buffer) - 1, chr(key))
+                stdscr.refresh()
+
+            else:
+                continue  # Ignore other keys
+
+        curses.curs_set(0)
+        stdscr.move(input_y, 4)
+        stdscr.clrtoeol()
         curses.noecho()
 
         if raw:
             message_log.append(f"> {raw}")
+            if raw not in history:
+                history.append(raw)
+                if len(history) > 10:
+                    history.pop(0)
+
 
         # ─── Run parser ───
         result = handle_command(
