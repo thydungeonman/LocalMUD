@@ -8,6 +8,7 @@
 - [Parser] Added a Debug Teleport command to move to rooms that are not linked.
 - [World] Created a region that can only be accessed via teleport for testing. These are not counted in the final room count.
 - [Parser] Pressing up and down arrows now cycle through the most recent 10 commands.
+- [Minigames] Added simple slot machine minigame.
 
 ### Changed
 - [Parser] Updated parser.py to be tolerent of rooms without the 'visited' property.
