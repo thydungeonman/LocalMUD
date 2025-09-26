@@ -20,6 +20,11 @@ Format notes (each monster is a dict):
 This file keeps definitions data-only so you can expand later.
 """
 
+# Monsters:
+# - Kobold - "kobold_bx"
+# - (add new monsters below this line, one per line)
+
+
 MONSTER_DEFS = {
     "kobold_bx": {
         "id": "kobold_bx",
