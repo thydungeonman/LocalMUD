@@ -172,11 +172,12 @@ def handle_command(
                 if req not in player["inventory"]:
                     return [f"The way is locked. You need the {req}."]
 
-        # update visited & xp
-        first = not rooms[new_room]["visited"]
+        # update visited & xp (tolerant to missing "visited" key)
+        first = not rooms[new_room].get("visited", False)
         rooms[new_room]["visited"] = True
         if first:
             player["xp"] = player.get("xp", 0) + 1
+
 
         # update location
         game_state["current_room"] = new_room
@@ -373,6 +374,58 @@ def handle_command(
             amount = int(tokens[2])
             player["gold"] = player.get("gold", 0) + amount
             return f"Gave {amount} gold. Player now has {player['gold']} gold."
+
+        elif action == "teleport":
+            # Usage: DEBUG TELEPORT <room_id>
+            if len(tokens) < 3:
+                return "Usage: DEBUG TELEPORT <room_id>"
+
+            # Join the rest of the tokens to allow room ids with punctuation or underscores
+            target_room = " ".join(tokens[2:])
+
+            # Validate rooms mapping is available
+            if "rooms" not in locals() and "rooms" not in globals():
+                return "Teleport failed: room data (rooms) is not available in this context."
+
+            # Prefer local then global
+            _rooms = locals().get("rooms") or globals().get("rooms")
+
+            if target_room not in _rooms:
+                # Offer a short helpful hint listing similarly named rooms
+                similar = [r for r in _rooms.keys() if target_room.lower() in r.lower()]
+                hint = f" Did you mean: {', '.join(similar)}?" if similar else ""
+                return f"Teleport failed: unknown room id '{target_room}'.{hint}"
+
+            # Apply the teleport: prefer game_state current room if available, else player location
+            if "game_state" in locals() or "game_state" in globals():
+                gs = locals().get("game_state") or globals().get("game_state")
+                gs["current_room"] = target_room
+            else:
+                player["location"] = target_room
+
+            # Optionally call spawn logic if provided (keeps dev workflow fast)
+            # If you have a spawn helper like spawn_by_room in utils/monster_manager, call it.
+            try:
+                spawn_fn = None
+                if "spawn_by_room" in globals():
+                    spawn_fn = globals()["spawn_by_room"]
+                elif "spawn_by_room" in locals():
+                    spawn_fn = locals()["spawn_by_room"]
+                else:
+                    # try common import without failing if module missing
+                    try:
+                        from utils.monster_manager import spawn_by_room as spawn_fn  # type: ignore
+                    except Exception:
+                        spawn_fn = None
+                if callable(spawn_fn):
+                    spawn_fn(_rooms, target_room)
+            except Exception:
+                # Don't let spawn errors break debug teleport; swallow and continue
+                pass
+
+            # Return confirmation
+            return f"Teleported to {target_room} ({_rooms[target_room].get('name','Unnamed room')})."
+
 
         elif action == "prunelogs":
             result = prune_error_logs()

@@ -1,8 +1,7 @@
-# world/overworld.py
-
 from world.fellmore_cliffs import build_region as build_fellmore
 from world.east_mill_plains import build_region as build_east_mill
 from world.chapel import build_region as build_chapel
+from world.devspace import build_region as build_devspace
 from utils.log_manager import verify_room_links
 
 def load_overworld():
@@ -12,11 +11,13 @@ def load_overworld():
     fellmore_rooms = build_fellmore(region_id="fellmore_cliffs")
     east_mill_rooms = build_east_mill(region_id="east_mill_plains")
     chapel_rooms = build_chapel(region_id="chapel")
+    devspace_rooms = build_devspace(region_id="devspace")
 
     # Aggregate
     overworld_rooms.update(fellmore_rooms)
     overworld_rooms.update(east_mill_rooms)
     overworld_rooms.update(chapel_rooms)
+    overworld_rooms.update(devspace_rooms)
 
     # Add transitions
     try:

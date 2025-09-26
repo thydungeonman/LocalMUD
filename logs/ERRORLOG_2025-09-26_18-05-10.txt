@@ -1,0 +1,10 @@
+2025-09-26 18:05:10,392 [ERROR] === Room Link Diagnostics ===
+2025-09-26 18:05:10,393 [ERROR] Broken exit from Jagged Overlook (fellmore_cliffs_2_2) going north to fellmore_cliffs_2_1
+2025-09-26 18:05:10,394 [ERROR] Broken exit from Jagged Overlook (fellmore_cliffs_2_2) going south to fellmore_cliffs_2_3
+2025-09-26 18:05:10,394 [ERROR] Broken exit from Grassy Verge (east_mill_plains_0_2) going west to east_mill_plains_0_1
+2025-09-26 18:05:10,394 [ERROR] Broken exit from Grassy Verge (east_mill_plains_0_2) going east to east_mill_plains_0_3
+2025-09-26 18:05:20,058 [ERROR] === Room Link Diagnostics ===
+2025-09-26 18:05:20,061 [ERROR] Broken exit from Jagged Overlook (fellmore_cliffs_2_2) going north to fellmore_cliffs_2_1
+2025-09-26 18:05:20,061 [ERROR] Broken exit from Jagged Overlook (fellmore_cliffs_2_2) going south to fellmore_cliffs_2_3
+2025-09-26 18:05:20,062 [ERROR] Broken exit from Grassy Verge (east_mill_plains_0_2) going west to east_mill_plains_0_1
+2025-09-26 18:05:20,062 [ERROR] Broken exit from Grassy Verge (east_mill_plains_0_2) going east to east_mill_plains_0_3

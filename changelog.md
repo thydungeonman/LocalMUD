@@ -5,6 +5,12 @@
 ### Added
 - [System] Created game/monsters.py to house monster data.
 - [System] Created game/combat.py to house the functions that the parser will call during combat.
+- [Parser] Added a Debug Teleport command to move to rooms that are not linked.
+- [World] Created a region that can only be accessed via teleport for testing. These are not counted in the final room count.
+
+### Changed
+- [Parser] Updated parser.py to be tolerent of rooms without the 'visited' property.
+
 ---
 
 ### 🗺️ v0.8.3 - “I Live Again"
