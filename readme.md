@@ -32,22 +32,8 @@ Requires Python 3.13+ and a terminal capable of running curses-based interfaces.
 Milestones that guide LocalMUD’s evolution—where mechanics grow from echoes into myth.
 
 
-### v0.7.6 — “Foundations & Access (additional)”
-The world learns to listen. Players reach deeper.
 
-- Add screen reader-friendly Non-Curses mode
-- Toggle verbose travel output for immersive navigation
-- Header redesign to show XP meter
-
-### v0.7.9 — “Paths & Places”
-The chapel reveals an exterior. Roads whisper possibilities.
-
-- Build prototype Overworld with non-chapel rooms
-
-- Dev commands: teleport, reveal visited, flag fog zones
-- Revisit prompt system: altered descriptions on second visit?
-
-### v0.8.0 — “Persistence”
+### v0.8.5 — “Persistence”
 The Echo Sovereign watches what you remember.
 
 - Save/load system with full player state tracking
@@ -56,14 +42,20 @@ The Echo Sovereign watches what you remember.
 - Orb modifiers: corrupted/benevolent seeds change world flavor
 - Expanded NPC behavior: dialogue trees, memory-aware responses
 
-### v0.9.0 — “Voices in the Stone” *(Tentative)*
+### v0.8.6 — “Voices in the Stone” *(Tentative)*
 The world speaks with intent.
 
 - Help system for all parser commands
 - Conversational NPCs: respond to location, inventory, and XP
 - Ambient whispers: Sovereign commentary during key events
 - Begin journaling system: player-written notes or lore discovery
+- Prepare for first public beta build / code being released to the public.
 
+### v0.8.7 — “The Hollow Accord" *(Tentative)*
+Faction diplomacy, regional events
+
+### v0.8.6 — “Ashes of the First Seed* *(Tentative)*
+World reset, legacy mechanics, seasonal cycles
 ---
 
 ## Lore Fragments
@@ -120,4 +112,4 @@ You are free to use, modify, distribute, and adapt this software for personal or
 
 ## Ewoks
 
-Ewoks are rad as hell. They had those two movies that were supposed to be for kids, but I remember them starting with the death of a parent. Really dark stuff. Anyway, you ever notice how Ewoks are half as tall as Wookies, an the name is the same but cut in half and backwards? Weird stuff man.
+Ewoks are rad as hell. They had those two movies that were supposed to be for kids, but I remember them starting with the death of a parent. Really dark stuff. Anyway, you ever notice how Ewoks are half as tall as Wookies, an the name is the same but cut in half and backwards? Weird stuff man. I also read that the handglider scene in Return of the Jedi was supposed to be much gorier but they had to tone it down in order to maintain a PG rating. Wookieepedia talks about it a little bit. I just find it endlessly facsinating that these little walking teddy bears are so well versed in dealing death.
