@@ -26,7 +26,7 @@ import random
 from utils.log_manager import log_error
 
 '''
-
+Not active. Placed here for reference
 log_error("DEBUG: Starting class selection")
 log_error(f"DEBUG: Rolled stats: {stats}")
 log_error("DEBUG: Waiting for stat confirmation")
@@ -38,6 +38,16 @@ log_error("DEBUG: Returning player from create_character()")
 
 
 CORE_STATS = ["str", "dex", "int", "wis", "con", "cha"]
+
+STAT_DISPLAY_NAMES = {
+    "str": "Strength",
+    "dex": "Dexterity",
+    "con": "Constitution",
+    "int": "Intelligence",
+    "wis": "Wisdom",
+    "cha": "Charisma"
+}
+
 
 def safe_getkey(stdscr, timeout=5000):
     stdscr.timeout(timeout)
@@ -66,13 +76,13 @@ def update_modifiers(player):
 
 
 CLASSES = {
-    "Fighter": {"Strength": 9},
-    "Thief": {"Dexterity": 9},
-    "Cleric": {"Wisdom": 9},
-    "Magic-User": {"Intelligence": 9},
-    "Dwarf": {"Constitution": 9},
-    "Elf": {"Intelligence": 9, "Strength": 9},
-    "Halfling": {"Dexterity": 9, "Constitution": 9}
+    "Fighter": {"str": 9},
+    "Thief": {"dex": 9},
+    "Cleric": {"wis": 9},
+    "Magic-User": {"int": 9},
+    "Dwarf": {"con": 9},
+    "Elf": {"int": 9, "str": 9},
+    "Halfling": {"dex": 9, "con": 9}
 }
 
 BACKGROUND_OPTIONS = [
@@ -146,8 +156,9 @@ def create_character(stdscr, base_player):
         stdscr.addstr(2, 2, "Your rolled stats:")
         for i, stat in enumerate(CORE_STATS):
             val = stats[stat]
-            mod = get_modifier(val)
-            stdscr.addstr(4 + i, 4, f"{stat}: {val} ({mod:+d})")
+            mod = calculate_bx_modifier(val)
+            display_name = STAT_DISPLAY_NAMES.get(stat, stat.upper())
+            stdscr.addstr(4 + i, 4, f"{display_name}: {val} ({mod:+d})")
 
         stdscr.addstr(11, 2, "Available Classes:")
         for j, cls in enumerate(eligible_classes):
@@ -162,6 +173,7 @@ def create_character(stdscr, base_player):
             player["stats"] = stats
             player.update(stats)  # Adds str, dex, etc. to player
             player["temp_mods"] = {stat: 0 for stat in ["str", "dex", "con", "int", "wis", "cha"]}
+            player["temp_mods"] = {stat: 0 for stat in CORE_STATS}
             update_modifiers(player)
 
             break
@@ -248,7 +260,8 @@ def create_character(stdscr, base_player):
         for i, stat in enumerate(core_stats):
             val = player.get(stat, 10)
             mod = player.get(f"{stat}_mod", 0)
-            stdscr.addstr(11 + i, 6, f"{stat.upper():<3}: {val:>2} ({mod:+d})")
+            display_name = STAT_DISPLAY_NAMES.get(stat, stat.upper())
+            stdscr.addstr(11 + i, 6, f"{display_name:<12}: {val:>2} ({mod:+d})")
 
 
         stdscr.addstr(18, 2, "Is this character okay? [Y]es / [N]o")
