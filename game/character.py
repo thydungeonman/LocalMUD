@@ -19,7 +19,14 @@ Dev Notes:
 """
 
 
-log_error(f"DEBUG: Name entered: {player.get('name')}")
+
+import curses
+import copy
+import random
+from utils.log_manager import log_error
+
+'''
+
 log_error("DEBUG: Starting class selection")
 log_error(f"DEBUG: Rolled stats: {stats}")
 log_error("DEBUG: Waiting for stat confirmation")
@@ -27,12 +34,7 @@ log_error("DEBUG: Copying stats into player dict")
 log_error(f"DEBUG: Final player dict: {player}")
 log_error("DEBUG: Calling update_modifiers()")
 log_error("DEBUG: Returning player from create_character()")
-
-
-import curses
-import copy
-import random
-from utils.log_manager import log_error
+'''
 
 
 CORE_STATS = ["str", "dex", "int", "wis", "con", "cha"]
@@ -105,9 +107,11 @@ def safe_getkey(stdscr, timeout=None):
 
 
 def roll_stats():
+    log_error("DEBUG: Running roll_stats")
     return {stat: sum(random.randint(1, 6) for _ in range(3)) for stat in CORE_STATS}
 
 def create_character(stdscr, base_player):
+    log_error("DEBUG: running create_character")
     player = copy.deepcopy(base_player)
      
     # --- Inialize Gold ---
@@ -126,6 +130,7 @@ def create_character(stdscr, base_player):
     if not name:
         name = "Unnamed Wanderer"
     player["name"] = name
+    log_error(f"DEBUG: Name entered: {player.get('name')}")
     
     player["curse_count"] = 0
 
@@ -285,6 +290,7 @@ def create_character_non_curses(player):
     
 
 def get_eligible_classes(stats):
+    log_error("DEBUG: running get_eligible_classes")
     eligible = []
     for cls, reqs in CLASSES.items():
         if all(stats.get(stat, 0) >= value for stat, value in reqs.items()):
@@ -292,6 +298,7 @@ def get_eligible_classes(stats):
     return eligible
 
 def add_gold(player, amount):
+    log_error("DEBUG: running add_gold")
     player["gold"] += amount
     print(f"{player['name']} now has {player['gold']} gold.")
 

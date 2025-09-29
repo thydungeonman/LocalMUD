@@ -18,6 +18,7 @@ logging.basicConfig(
     level=logging.ERROR,
     format="%(asctime)s [%(levelname)s] %(message)s"
 )
+
 def prune_error_logs(log_dir=".", archive=False):
     import os
     import shutil
@@ -61,6 +62,11 @@ def prune_error_logs(log_dir=".", archive=False):
     if skipped:
         result += f" Skipped {len(skipped)} locked file(s): {', '.join(skipped)}"
     return result
+    
+def log_error(message):
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open("error_log.txt", "a") as f:
+        f.write(f"[{timestamp}] {message}\n")
 
 def cleanup_old_logs():
     now = datetime.now()
