@@ -19,12 +19,23 @@ Dev Notes:
 """
 
 
+log_error(f"DEBUG: Name entered: {player.get('name')}")
+log_error("DEBUG: Starting class selection")
+log_error(f"DEBUG: Rolled stats: {stats}")
+log_error("DEBUG: Waiting for stat confirmation")
+log_error("DEBUG: Copying stats into player dict")
+log_error(f"DEBUG: Final player dict: {player}")
+log_error("DEBUG: Calling update_modifiers()")
+log_error("DEBUG: Returning player from create_character()")
+
 
 import curses
 import copy
 import random
+from utils.log_manager import log_error
 
-CORE_STATS = ["Strength", "Dexterity", "Intelligence", "Wisdom", "Constitution", "Charisma"]
+
+CORE_STATS = ["str", "dex", "int", "wis", "con", "cha"]
 
 def safe_getkey(stdscr, timeout=5000):
     stdscr.timeout(timeout)
@@ -34,6 +45,22 @@ def safe_getkey(stdscr, timeout=5000):
         return None
     finally:
         stdscr.timeout(-1)  # Reset to blocking mode
+
+def calculate_bx_modifier(score):
+    if score <= 3: return -3
+    elif score <= 5: return -2
+    elif score <= 8: return -1
+    elif score <= 12: return 0
+    elif score <= 15: return +1
+    elif score <= 17: return +2
+    else: return +3
+
+def update_modifiers(player):
+    for stat in ["str", "dex", "con", "int", "wis", "cha"]:
+        base = player.get(stat, 10)
+        temp = player.get("temp_mods", {}).get(stat, 0)
+        total = base + temp
+        player[f"{stat}_mod"] = calculate_bx_modifier(total)
 
 
 CLASSES = {
@@ -128,7 +155,10 @@ def create_character(stdscr, base_player):
         key = safe_getkey(stdscr, timeout=None)
         if key and key.lower() == "a":
             player["stats"] = stats
-            player["modifiers"] = {stat: get_modifier(stats[stat]) for stat in CORE_STATS}
+            player.update(stats)  # Adds str, dex, etc. to player
+            player["temp_mods"] = {stat: 0 for stat in ["str", "dex", "con", "int", "wis", "cha"]}
+            update_modifiers(player)
+
             break
         elif key and key.lower() == "r":
             continue
@@ -176,7 +206,7 @@ def create_character(stdscr, base_player):
         "Halfling": 6
     }
 
-    con_mod = player["modifiers"].get("Constitution", 0)
+    con_mod = player.get("con_mod", 0)
     base_hp = random.randint(1, hit_dice[player["class"]])
     total_hp = max(1, base_hp + con_mod)
 
@@ -186,6 +216,10 @@ def create_character(stdscr, base_player):
     if player.get("max_hp_bonus"):
         player["max_hp"] += 5
         player["hp"] = player["max_hp"]  # ✅ Re-sync current HP
+
+
+    # ─── Calculate Ability Modifiers ───
+    update_modifiers(player)
 
     # ─── Final Confirmation ───
     confirmed = False
@@ -198,11 +232,19 @@ def create_character(stdscr, base_player):
         stdscr.addstr(7, 4, f"HP: {player['hp']}")
         stdscr.addstr(8, 4, f"Max HP: {player['max_hp']}")  # ✅ Added for clarity
 
+
+        
+
+        # ─── Ability Scores and Modifiers ───
         stdscr.addstr(10, 4, "Stats:")
-        for i, stat in enumerate(CORE_STATS):
-            val = player["stats"][stat]
-            mod = player["modifiers"][stat]
-            stdscr.addstr(11 + i, 6, f"{stat}: {val} ({mod:+d})")
+        
+        stdscr.addstr(10, 2, "Abilities:")
+        core_stats = ["str", "dex", "con", "int", "wis", "cha"]
+        for i, stat in enumerate(core_stats):
+            val = player.get(stat, 10)
+            mod = player.get(f"{stat}_mod", 0)
+            stdscr.addstr(11 + i, 6, f"{stat.upper():<3}: {val:>2} ({mod:+d})")
+
 
         stdscr.addstr(18, 2, "Is this character okay? [Y]es / [N]o")
         stdscr.refresh()
@@ -212,6 +254,12 @@ def create_character(stdscr, base_player):
             confirmed = True
         elif key and key.lower() == "n":
             return None  # Signal to restart character creation externally
+
+        for stat in CORE_STATS:
+            player[stat] = stats[stat]  # Copy rolled stats into player dict
+
+        player["temp_mods"] = {stat: 0 for stat in CORE_STATS}  # Initialize temp modifiers
+        update_modifiers(player)  # Calculate final modifiers
 
 
     return player
@@ -235,22 +283,6 @@ def create_character_non_curses(player):
     print(f"\nWelcome, {player['name']} the {player['background']}!")
     return player
     
-def get_modifier(score):
-    if score == 3:
-        return -3
-    elif score in [4, 5]:
-        return -2
-    elif 6 <= score <= 8:
-        return -1
-    elif 9 <= score <= 12:
-        return 0
-    elif 13 <= score <= 15:
-        return +1
-    elif score in [16, 17]:
-        return +2
-    elif score == 18:
-        return +3
-
 
 def get_eligible_classes(stats):
     eligible = []

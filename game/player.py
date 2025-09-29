@@ -32,6 +32,12 @@ player = {
     "int": 10, #Spell Learning
     "wis": 8, #Saving Throws, Divine Magic
     "cha": 11, #npc reactions, hirelings
+    "str_mod": 1,
+    "dex_mod": -1,
+    "con_mod": 0,
+    "int_mod": 0,
+    "wis_mod": -1,
+    "cha_mod": 0,
     "level": 1, 
     "xp": 0,
     "gold": 100,  # Starting gold

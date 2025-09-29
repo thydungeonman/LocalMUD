@@ -16,9 +16,9 @@ from game.settings import load_settings
 from game.character import (
     create_character,
     get_eligible_classes,
-    get_modifier,
     create_character_non_curses
 )
+
 
 cleanup_old_logs()
 

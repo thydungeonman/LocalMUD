@@ -56,6 +56,7 @@ Faction diplomacy, regional events
 
 ### v0.8.6 — “Ashes of the First Seed* *(Tentative)*
 World reset, legacy mechanics, seasonal cycles
+
 ---
 
 ## Lore Fragments
