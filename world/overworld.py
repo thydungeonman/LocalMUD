@@ -3,6 +3,8 @@ from world.east_mill_plains import build_region as build_east_mill
 from world.chapel import build_region as build_chapel
 from world.devspace import build_region as build_devspace
 from utils.log_manager import verify_room_links
+from game import spawn
+
 
 def load_overworld():
     overworld_rooms = {}
@@ -29,5 +31,8 @@ def load_overworld():
 
     # Validate and log broken links
     verify_room_links(overworld_rooms)
+
+    # Add Monster Spawn info
+    spawn.init_region_spawns(overworld_rooms)
 
     return overworld_rooms

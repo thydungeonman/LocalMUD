@@ -1,0 +1,24 @@
+[2025-10-03 13:22:10] DEBUG: running create_character
+[2025-10-03 13:22:12] DEBUG: Name entered: Alex
+[2025-10-03 13:22:12] DEBUG: Running roll_stats
+[2025-10-03 13:22:12] DEBUG: running get_eligible_classes
+[2025-10-03 13:22:15] DEBUG: running get_eligible_classes
+[2025-10-03 14:02:00] DEBUG: running create_character
+[2025-10-03 14:02:01] DEBUG: Name entered: Alex
+[2025-10-03 14:02:01] DEBUG: Running roll_stats
+[2025-10-03 14:02:01] DEBUG: running get_eligible_classes
+[2025-10-03 14:02:02] DEBUG: Running roll_stats
+[2025-10-03 14:02:02] DEBUG: running get_eligible_classes
+[2025-10-03 14:02:04] DEBUG: Running roll_stats
+[2025-10-03 14:02:04] DEBUG: running get_eligible_classes
+[2025-10-03 14:02:05] DEBUG: running get_eligible_classes
+[2025-10-03 14:12:02] DEBUG: running create_character
+[2025-10-03 14:12:04] DEBUG: Name entered: alex
+[2025-10-03 14:12:04] DEBUG: Running roll_stats
+[2025-10-03 14:12:04] DEBUG: running get_eligible_classes
+[2025-10-03 14:12:05] DEBUG: running get_eligible_classes
+[2025-10-03 14:15:56] DEBUG: running create_character
+[2025-10-03 14:15:57] DEBUG: Name entered: Alex
+[2025-10-03 14:15:57] DEBUG: Running roll_stats
+[2025-10-03 14:15:57] DEBUG: running get_eligible_classes
+[2025-10-03 14:15:58] DEBUG: running get_eligible_classes

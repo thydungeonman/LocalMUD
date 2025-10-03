@@ -22,7 +22,7 @@ def build_region(region_id="devspace"):
         "items": [],
         "exits": {
             "north": f"{region_id}_0_1",
-            "east": f"{region_id}_0_2"
+            "east": f"{region_id}_1_0"
         },
         "monsters": []
     }
@@ -44,11 +44,18 @@ def build_region(region_id="devspace"):
         "exits": {
             "south": f"{region_id}_0_0"
         },
-        "monsters": ["kobold_bx", "kobold_bx"]
+        "spawns": [
+        {
+            "type": "monster",
+            "key": "kobold_bx",
+            "initial_count": 1
+        }
+        ]
+
     }
 
     # Quiet Workshop
-    rooms[f"{region_id}_0_2"] = {
+    rooms[f"{region_id}_1_0"] = {
         "name": "Quiet Workshop",
         "description": (
             "Benches line the walls, each cluttered with tools, half-finished scripts, "

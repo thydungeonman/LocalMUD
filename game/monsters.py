@@ -28,21 +28,31 @@ This file keeps definitions data-only so you can expand later.
 MONSTER_DEFS = {
     "kobold_bx": {
         "id": "kobold_bx",
-        "name": "kobold",
-        "hd": 1,                       # 1 HD creature in B/X
-        "hp": 4,                       # typical HP (1d6 -> avg 3-4)
-        "ac": 7,                       # B/X AC (lower is better; 7 = leather/average)
-        "attack": 0,                   # baseline to-hit modifier (simple systems may ignore)
-        "attacks": ["spear 1d6"],      # flavor; single attack with spear
-        "damage": "1d6",               # fallback damage if needed
-        "xp": 25,                      # award XP for kill (small B/X-appropriate amount)
-        "loot": ["kobold_tooth"],      # item ids; optional and can be created in items table
+        "name": "Kobold",
+        "hd": 1,
+        "hp": 4,
+        "ac": 7,
+        "attack": 0,
+        "attacks": ["spear 1d6"],
+        "damage": "1d6",
+        "xp": 25,
+        "loot": ["kobold_tooth"],
+        "base_stats": {
+            "str": 8,
+            "dex": 13,
+            "con": 10,
+            "int": 8,
+            "wis": 7,
+            "cha": 8
+        },
+        "hostile": True,
         "description": (
             "A small, scaly humanoid with a sly grin and a crude spear. "
             "Kobolds are weak individually but can be dangerous in groups."
         )
     }
 }
+
 
 # Helper: expose a canonical list of monster ids (convenient for tooling)
 MONSTER_IDS = list(MONSTER_DEFS.keys())

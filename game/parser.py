@@ -210,11 +210,19 @@ def handle_command(
             items_here and "Items here: " + ", ".join(items_here)
             or "There are no items here."
         )
-        # NPCs
+        # NPCs (Depricated)
         present_npcs = npcs.get(game_state["current_room"], [])
         if present_npcs:
             npc_names = [npc["name"] for npc in present_npcs]
             out.append("You see here: " + ", ".join(npc_names))
+
+        # Monsters
+        from game.spawn import get_room_instances
+        monster_instances = get_room_instances(game_state["current_room"])
+        if monster_instances:
+            monster_names = [m["name"] for m in monster_instances]
+            out.append("You see: " + ", ".join(monster_names))
+
 
         # exits
         exits = room.get("exits", {})
