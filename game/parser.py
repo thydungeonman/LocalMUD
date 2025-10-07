@@ -357,6 +357,7 @@ def handle_command(
                 " - BLACKJACK",
                 " - DICEHIGHLOW",
                 " - SLOTS",
+                " - GRIMOIREGAMBIT",
                 " - GIVEGOLD",
                 " - HEAL",
                 " - PRUNELOGS",
@@ -376,6 +377,13 @@ def handle_command(
         elif action == "dicehighlow":
             import minigames.dicehighlow as dicehighlow
             return run_curses_game(lambda stdscr: dicehighlow.play(player, stdscr))
+            
+        elif action == "grimoiregambit":
+            import minigames.grimoire_gambit as grimoire_gambit
+            return run_curses_game(lambda stdscr: grimoire_gambit.start_game(stdscr))
+
+
+
             
         elif action == "heal":
             player["hp"] = player.get("max_hp", 6)

@@ -5,6 +5,7 @@
 NOTE SOMETHING IS UP WITH THE SLOTS GAME. IT DIDNT PAY OUT.
 
 ### Added
+- [Minigames] Added grimore_gambit.py, a collectable trading card game/mini game.  
 - [System] Created game/monsters.py to house monster data.
 - [System] Created game/combat.py to house the functions that the parser will call during combat.
 - [System] Created game/spawn.py to house monster spawning code.
