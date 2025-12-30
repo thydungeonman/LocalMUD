@@ -33,6 +33,12 @@ def show_title_screen(stdscr, motd, player):
     while True:
         stdscr.clear()
 
+        if(stdscr.getmaxyx()[0] < 28):
+            stdscr.addstr(0,0,"Window too small. Please resize.")
+            stdscr.refresh()
+            stdscr.getkey() #block until the player resizes
+            return
+
         # Display intro splash
         for i, line in enumerate(lines):
             stdscr.addstr(i + 1, 2, line.strip())
