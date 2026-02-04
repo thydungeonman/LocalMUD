@@ -175,7 +175,6 @@ def draw_ui(stdscr, game_state, player, rooms, message_log):
 
     orb_status = "Carried" if "Glowing Orb" in player.get("inventory", []) else "Missing"
     top_bar = f"{title} — HP: {hp}/{max_hp} | Orb: {orb_status}"
-
     stdscr.addstr(0, 2, top_bar[: width - 4])
 
     # ─── Room Info ───
@@ -200,7 +199,15 @@ def draw_ui(stdscr, game_state, player, rooms, message_log):
     # ─── Message Log ───
     max_lines = height - 7
     visible = message_log[-max_lines:]
-    for idx, line in enumerate(visible):
+
+    realvisible = []
+    for line in visible:
+        if(line == ''):
+            realvisible.append(line)
+        else:
+            for multiline in wrap_text(line,width):
+                realvisible.append(multiline)
+    for idx, line in enumerate(realvisible):
         stdscr.addstr(5 + idx, 2, line[: width - 4])
 
     stdscr.refresh()

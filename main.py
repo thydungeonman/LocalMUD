@@ -239,6 +239,8 @@ def main_loop(stdscr, game_state, player, rooms, items, current_motd, message_lo
         curses.curs_set(1)
         stdscr.refresh()
 
+        cont = False #for restarting this while loop so we can redraw the ui
+
         while True:
             key = stdscr.getch()
 
@@ -281,7 +283,10 @@ def main_loop(stdscr, game_state, player, rooms, items, current_motd, message_lo
                 stdscr.refresh()
 
             else:
-                continue  # Ignore other keys
+                cont = True
+                break  # you can't Ignore other keys
+        if cont:
+            continue
 
         curses.curs_set(0)
         stdscr.move(input_y, 4)
